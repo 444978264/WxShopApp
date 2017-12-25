@@ -1,0 +1,2 @@
+# WxShopApp
+develop with wxapp
