@@ -1,0 +1,6 @@
+<template name="noData">
+  <view class="nodata">
+    <image src="../../img/empty_box.svg" style="width: 200rpx;display: block;margin: 0 auto;" mode="widthFix"></image>
+    <text style="padding-top: 30rpx;display: inline-block;">暂无数据</text>
+  </view>
+</template>

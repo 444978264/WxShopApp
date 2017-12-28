@@ -1,0 +1,72 @@
+@import '/common/iconfont.wxss';
+@import '/common/flex.wxss';
+@import '/common/public.wxss';
+
+@import '/pages/template/popover/popover.wxss';
+@import '/pages/template/article/article.wxss';
+@import '/pages/template/goods/goods.wxss';
+@import '/pages/template/modal/modal.wxss';
+
+
+
+.footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+}
+
+.line-container{
+    padding:20rpx;
+}
+.line{
+    height:1.6rpx;
+    width:100%;
+    background:#efefef;
+}
+page{
+    background:#f0f2f4
+}
+
+button.btn{
+    border:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    padding:20rpx;
+    margin-bottom:20rpx;
+    background:#fff;
+}
+
+.weight600{
+    font-weight:600
+}
+.weight700{
+    font-weight:700
+}
+
+.font10{
+    font-size:20rpx;
+}
+.font12{
+    font-size:24rpx;
+}
+.font14{
+    font-size:28rpx;
+}
+.font16{
+    font-size:32rpx;
+}
+.font18{
+    font-size:36rpx;
+}
+.font20{
+    font-size:40rpx;
+}
+
+.hover-class{
+    opacity:.8;
+}

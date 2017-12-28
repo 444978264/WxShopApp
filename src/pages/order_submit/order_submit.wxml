@@ -1,0 +1,94 @@
+<import src="../template/modal/modal.wxml" />
+
+<view class="container text-center flex flex-center">
+    <text style="font-size:30rpx;">请确认你的商品清单</text>
+</view>
+<wxs module="tools">
+    function parse(data){
+        return typeof data == "string" ?JSON.parse(data):data
+    }
+    function parseNum(data){
+        return +data
+    }
+    module.exports.parse = parse
+    module.exports.parseNum = parseNum
+</wxs>
+<view wx:if="{{goodsList.length}}" wx:for="{{goodsList}}" wx:key="{{index}}" class="container flex flex-row">
+    <image style="width:180rpx;height:180rpx;margin-right:20rpx;" mode="scaleToFill" src="http://www.lastmall.com/{{item.img}}" />
+    <view class="flex flex-column flex-between font14">
+        <text>{{item.name}}</text>
+        <view>
+            <text wx:for="{{tools.parse(item.spec_array)}}" wx:key="idx" wx:for-index="idx" wx:for-item="val">{{val.name}}:{{val.value}}</text>
+        </view>
+        <text>{{item.real_price}}x{{item.count}}</text>
+    </view>
+    <view wx:if="{{index!==goodsList.length-1}}" style="padding:20rpx 0;">
+        <view class="line"></view>
+    </view>
+</view>
+<view class="container">
+    <view style="padding-right:60rpx;position:relative" bindtap="_selectSource" data-type="address">
+        <view bindtap="addAddress" wx:if="{{!addressList.length}}" class='flex flex-row flex-left font16'>
+            <image style="width:80rpx;margin-right:20rpx" mode="widthFix" src="../../img/add.svg"/> 
+            <text>添加收货地址</text>
+        </view>
+        <view wx:else class="flex font14">
+            <text class="weight600">收货地址</text>
+            <view style="padding:10rpx 0;"></view>
+            <text class="font12">{{addressList[addressIdx].accept_name}}({{addressList[addressIdx].mobile}})</text>
+            <text class="font12">{{addressList[addressIdx].province_name+addressList[addressIdx].city_name+addressList[addressIdx].area_name+addressList[addressIdx].address}}</text>
+        </view>
+        <image class="absolute" style="width:30rpx;right:0;" mode="widthFix" src="../../img/arrow_right.svg"/> 
+    </view>
+    <view style="padding:20rpx 0;">
+        <view class="line"></view>
+    </view>
+    <view style="padding-right:60rpx;position:relative" bindtap="_selectSource" data-type="delivery" >
+        <view wx:if="delivery_list.length" class="flex font14">
+            <text class="weight600">配送方式</text>
+            <view style="padding:10rpx 0;"></view>
+            <text class="font12">{{delivery_list[deliveryIdx].name}}--￥{{delivery_list[deliveryIdx].price||'--'}}</text>
+            <view class="font12">{{delivery_list[deliveryIdx].description}}</view>
+        </view>
+        <image class="absolute" style="width:30rpx;right:0;" mode="widthFix" src="../../img/arrow_right.svg"/>      
+    </view>
+</view>
+<view class="container">
+    <view class="flex flex-between flex-row font14">
+        <text>商品金额</text>
+        <text>{{result.sum}}</text>
+    </view>
+    <view class="flex flex-between flex-row font14">
+        <text>运费</text>
+        <text>{{delivery_list[deliveryIdx].price}}</text>
+    </view>
+    <view wx:if="{{result.reduce}}" class="flex flex-between flex-row font14">
+        <text>会员优惠</text>
+        <text>{{result.reduce}}</text>
+    </view>
+    <view wx:for="{{promotionPlug}}" wx:key="{{index}}" class="flex flex-between flex-row font14">
+        <text>{{item.name}}{{item.freefreight==1?"包邮":''}}</text>
+        <text>-￥{{item.reduce}}</text>
+    </view>
+    <view style="padding:20rpx 0;">
+        <view class="line"></view>
+    </view>
+    <view hidden class="flex flex-between flex-row font14">
+        <text>代金券</text>
+        <text>商品金额</text>
+    </view>
+     <view hidden style="padding:20rpx 0;">
+        <view class="line"></view>
+    </view>
+    <view class="flex flex-between flex-row font14 weight600">
+        <text>订单总额</text>
+        <text>￥{{(final_sum -(ticketIdx>=0&&ticketLst[ticketIdx].value||0)+tools.parseNum(delivery_list[deliveryIdx].price))>=0?(final_sum
+                        -(ticketIdx>=0&&ticketLst[ticketIdx].value||0)+tools.parseNum(delivery_list[deliveryIdx].price)):0}}</text>
+    </view>
+</view>
+<view class="footer">
+    <button class="btn-pay" type="primary" size="default" loading="{{false}}"  bindtap="defaultTap" hover-class="hover-class">提交订单</button>
+</view>
+
+
+<template is="modal" data="{{show_modal,temp_type,dataSource,addressIdx,deliveryIdx}}"></template>

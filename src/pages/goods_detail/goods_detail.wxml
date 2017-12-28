@@ -1,0 +1,93 @@
+<import  src="../template/article/swiper.wxml" />
+<template is="swiper" data="{{photo}}"/> 
+<view class="content">
+    <view class="container content-header">
+        <view>
+            <view class="flex">
+                <text style="font-size:46rpx;">￥{{price||result.group_price}}</text>
+            </view>      
+            <view class="flex">
+                <text class="sub-info">价格<text style="text-decoration: line-through;">￥{{result.sell_price}}</text></text>
+            </view>      
+            <view class="flex flex-row">
+                <text class="sub-info text-left flex-item">重量{{result.weight}}{{result.unit}}</text>
+                <text class="sub-info flex-item {{result.tax_price>0?'text-center':'text-right'}}">总销量{{result.sale}}</text>
+                <text class="sub-info text-right flex-item" wx:if="{{result.tax_price>0}}">预估税费{{result.tax_price}}</text>
+            </view>            
+        </view>
+        <view style="padding:20rpx 0;">
+            <view class="line"></view>
+        </view>
+        <view style="padding-right:80rpx;position:relative">
+            <span class="warp-hide" style="font-size:32rpx">
+                {{result.name}}
+            </span>
+            <button class="share" open-type="share" plain size="mini">
+                <image src="../../img/share.svg" mode="widthFix" style="width:46rpx;"/>
+            </button>   
+        </view>
+    </view>
+    <view class="container content-body">
+        <view style="padding-right:80rpx;position:relative">
+            <span class="warp-hide" style="font-size:32rpx">
+                已选(默认)：{{selectArr}}
+            </span>
+            <image bindtap="showPop" src="../../img/more.svg" mode="widthFix" style="width:46rpx;position:absolute;right:0;top:0;"/>
+        </view>
+    </view>
+</view>
+
+<view hidden="{{!show_pop}}" class="modal-layer" bindtap="closePop"></view>
+<view wx:if="spec_array!=null" class="popover {{show_pop?'pop-show':''}}">
+    <view class="flex flex-column">
+        <text style="color:#fb5353">￥{{price}}</text>
+        <view style="padding:6rpx 0;"></view>
+        <text class="pop-title">库存{{store_num}}件</text>
+        <view style="padding:6rpx 0;"></view>
+        <text class="pop-title">已选：{{selectArr}}</text>
+    </view>
+    <view style="padding:20rpx 0;">
+        <view class="line"></view>
+    </view>
+    <block wx:for="{{spec_array}}" wx:key="{{index}}">
+        <view>
+            <text class="pop-title">{{item.name}}</text>
+            <view class="flex flex-wrap flex-row">
+                <view bindtap="checkHandle" class="pop-item text-center {{selectArr[index]==val?'active':''}}" data-idx="{{index}}" data-val="{{val}}" wx:for="{{item.value}}" wx:for-index="idx" wx:for-item="val" wx:key="{{idx}}">
+                    {{val}}
+                </view>
+            </view>       
+        </view>
+        <view style="padding:20rpx 0;">
+            <view class="line"></view>
+        </view>
+    </block>
+    <view class="flex flex-row flex-between">
+        <text class="pop-title">购买数量</text>
+        <view class="flex flex-row flex-center">
+            <button class="btn btn-pop reduce" type="default" data-type="reduce" size="mini" plain disabled="{{false}}" bindtap="reduceOrincrease">-</button>
+            <input class="text-center btn-pop" value="{{count}}" type="number" maxlength="{{2}}"cursor-spacing="{{40}}" bindblur="setCount"/>
+            <button class="btn btn-pop add" type="default" data-type="add" size="mini" plain disabled="{{false}}" bindtap="reduceOrincrease">+</button>
+        </view>
+    </view>
+     <view style="padding:20rpx 0;">
+        <view class="line"></view>
+    </view>
+    <view class="btn-group">
+        <view class="btn btn-danger" bindtap="toBuy">
+            <text>立即购买</text>
+        </view> 
+        <view class="btn btn-primary" bindtap="joinCart">
+            <text>加入购物车</text>
+        </view>    
+    </view>  
+</view>
+
+<view class="footer btn-group">
+    <view class="btn btn-danger" bindtap="resultCtrl" data-type="bug">
+        <text>立即购买</text>
+    </view> 
+    <view class="btn btn-primary" bindtap="resultCtrl" data-type="cart">
+        <text>加入购物车</text>
+    </view>    
+</view>    

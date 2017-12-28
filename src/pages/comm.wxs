@@ -1,0 +1,20 @@
+var nav = [
+    {
+        title: "首页",
+        icon: '../../img/cup.svg'
+    },
+    {
+        title: "活动",
+        icon: '../../img/cup.svg'
+    },
+    {
+        title: "购物袋",
+        icon: '../../img/cup.svg'
+    },
+    {
+        title: "我的",
+        icon: '../../img/cup.svg'
+    }
+]
+
+module.exports.nav = nav

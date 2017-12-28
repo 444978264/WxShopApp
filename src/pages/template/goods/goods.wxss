@@ -1,0 +1,27 @@
+.goods-item{
+    width:50%;
+    position: absolute;
+    padding:10rpx;
+    box-sizing:border-box;
+    transition:opacity .5s ease;
+}
+
+.goods-img{
+    width:100%;
+}
+.goods-info{
+    display:flex;
+    flex-direction: column;
+    padding:10rpx;
+}
+
+.goods-title{
+    font-size:26rpx;
+}
+.goods-price{
+    color:#111;
+}
+.goods-sale{
+    font-size:20rpx;
+    color: #d3d3d3;
+}

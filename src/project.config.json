@@ -1,0 +1,62 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.7.2",
+	"appid": "wx6001355aab687b62",
+	"projectname": "%E5%B9%BF%E5%91%8A%E7%BA%A2%E5%8C%85",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 4,
+			"list": [
+				{
+					"id": 0,
+					"name": "测试转发",
+					"pathName": "pages/content/content",
+					"query": "recmd_userid=12313&id=355",
+					"scene": "1008"
+				},
+				{
+					"id": 1,
+					"name": "zxx",
+					"pathName": "pages/category/category",
+					"query": "",
+					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "pages/goods_detail/goods_detail",
+					"query": "id=19",
+					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order_submit/order_submit",
+					"query": "type='product'&id=87&num=1"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,4 @@
+<import  src="../template/goods/goods.wxml" />
+<scroll-view class="goods-list"  scroll-y="true"lower-threshold="{{100}}" style="height:100%" bindscrolltolower="fetch">
+    <template wx:for="{{list}}" wx:key="{{index}}" is="goods" data="{{...item,...waterfallStyle[item.id]}}"></template>
+</scroll-view>

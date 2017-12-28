@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/goods_detail/goods_detail",
+    "pages/order_submit/order_submit",
+    "pages/usercenter/usercenter",
+    "pages/login/login",
+    "pages/404/404"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "广告红包",
+    "navigationBarTextStyle": "#fff",
+    "backgroundColor": "#eeeeee",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./img/index.png",
+        "selectedIconPath": "./img/index.active.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "商品",
+        "iconPath": "./img/catorage.png",
+        "selectedIconPath": "./img/catorage.active.png"
+      },
+      {
+        "pagePath": "pages/usercenter/usercenter",
+        "text": "我的",
+        "iconPath": "./img/user.png",
+        "selectedIconPath": "./img/user.active.png"
+      }
+    ],
+    "position": "bottom",
+    "selectedColor": "#ffffff",
+    "backgroundColor": "#373737",
+    "color": "#808080"
+  },
+  "debug": true
+}
