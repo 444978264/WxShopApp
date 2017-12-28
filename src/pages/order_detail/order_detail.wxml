@@ -1,0 +1,92 @@
+<import src="../template/modal/modal.wxml" />
+
+<view class="container text-center flex flex-center">
+    <text style="font-size:30rpx;">目前订单状态：<text>{{result.order_status_name}}</text></text>
+    <view class="line-container"></view>
+    <view class="text-left" style="width:100%;">        
+        <text style="font-size:30rpx;">订单号：<text>{{result.order_no}}</text>  </text>
+    </view>
+</view>
+<wxs module="tools">
+    function parse(data){
+        return typeof data == "string" ?JSON.parse(data):data
+    }
+    function parseNum(data){
+        return +data
+    }
+    module.exports.parse = parse
+    module.exports.parseNum = parseNum
+</wxs>
+<view wx:if="{{result.items.length}}" wx:for="{{result.items}}" wx:key="{{index}}" class="container flex flex-row">
+    <image style="width:180rpx;height:180rpx;margin-right:20rpx;" mode="scaleToFill" src="http://www.lastmall.com{{item.img}}" />
+    <view class="flex flex-column flex-between font14">
+        <text>{{item.name_value}}</text>
+        <view>
+            <text wx:for="{{tools.parse(item.spec_array)}}" wx:key="idx" wx:for-index="idx" wx:for-item="val">{{val.name}}:{{val.value}}</text>
+        </view>
+        <text>{{item.real_price}}x{{item.goods_nums}}</text>
+    </view>
+    <view wx:if="{{index!==goodsList.length-1}}" style="padding:20rpx 0;">
+        <view class="line"></view>
+    </view>
+</view>
+<view class="container">
+    <view style="padding-right:60rpx;position:relative">
+        <view class="flex font14">
+            <text class="weight600">收货地址</text>
+            <view style="padding:10rpx 0;"></view>
+            <text class="font12">{{result.accept_name}}({{result.mobile}})</text>
+            <text class="font12">{{result.province_name+result.city_name+result.area_name+result.address}}</text>
+        </view>
+    </view>
+    <view style="padding:20rpx 0;">
+        <view class="line"></view>
+    </view>
+    <view style="padding-right:60rpx;position:relative">
+        <view wx:if="delivery_list.length" class="flex font14">
+            <text class="weight600">配送方式</text>
+            <view style="padding:10rpx 0;"></view>
+            <text class="font12"> {{'快递'}}</text>
+            <view class="font12">{{result.description}}</view>
+        </view>
+    </view>
+</view>
+<view class="container">
+    <view class="flex flex-between flex-row font14">
+        <text>商品金额</text>
+        <text>{{result.payable_amount}}</text>
+    </view>
+    <view class="flex flex-between flex-row font14">
+        <text>运费</text>
+        <text>{{result.payable_freight}}</text>
+    </view>
+    <view wx:if="{{result.reduce}}" class="flex flex-between flex-row font14">
+        <text>会员优惠</text>
+        <text>{{result.reduce}}</text>
+    </view>
+    <view wx:for="{{result.promotionPlug}}" wx:key="{{index}}" class="flex flex-between flex-row font14">
+        <text>{{item.name}}{{item.freefreight==1?"包邮":''}}</text>
+        <text>-￥{{item.reduce}}</text>
+    </view>
+    <view style="padding:20rpx 0;">
+        <view class="line"></view>
+    </view>
+    <view hidden class="flex flex-between flex-row font14">
+        <text>代金券</text>
+        <text>商品金额</text>
+    </view>
+     <view hidden style="padding:20rpx 0;">
+        <view class="line"></view>
+    </view>
+    <view class="flex flex-between flex-row font14 weight600">
+        <text>订单总额</text>
+        <text>￥{{result.order_amount}}</text>
+    </view>
+</view>
+<view class="footer">
+    <button wx:if="{{result.status==1}}" class="btn-pay" type="primary" data-type="payment" size="default" loading="{{false}}"  bindtap="_selectSource" hover-class="hover-class">立即支付</button>
+    <button wx:elif="{{result.status==2&&result.pay_status==1&&result.distribution_status==0||result.status==5}}" class="btn-pay" type="primary"size="default" loading="{{false}}" bindtap="refund" hover-class="hover-class">申请退款</button>
+</view>
+
+
+<template is="modal" data="{{show_modal,temp_type,dataSource,paymentIdx}}"></template>

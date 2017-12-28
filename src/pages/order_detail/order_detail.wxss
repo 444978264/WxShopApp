@@ -1,0 +1,5 @@
+button.btn-pay{
+    border-radius:0;
+    background:rgb(55, 55, 55);
+    font-size:32rpx;
+}

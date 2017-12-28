@@ -1,23 +1,11 @@
-<wxs src="./../comm.wxs" module="nav" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<include src="../template/footer/footer.wxml" />
+<import src="../template/article/swiper.wxml" />
+<view class="input-group flex flex-row font14">
+    <view class="flex flex-row flex-center local">
+        <image style="width:30rpx;" src="../../img/local.svg" mode="widthFix" />
+        <text>温州</text>
+    </view>
+    <view class="flex flex-row flex-center flex-item input">     
+        <input class="input flex-item text-center" confirm-type="search" type="text" placeholder="请搜索想要的商品" />
+        <image style="width:40rpx; margin-right:10rpx;" src="../../img/search.svg" mode="widthFix" />
+    </view>
+</view>

@@ -1,0 +1,10 @@
+.input-group{
+    padding:20rpx;
+}
+.input{
+    background:#fff;
+    border-radius:8rpx;
+}
+.local{
+    margin-right:30rpx;
+}

@@ -17,7 +17,7 @@
 }
 
 .line-container{
-    padding:20rpx;
+    padding:20rpx 0;
 }
 .line{
     height:1.6rpx;

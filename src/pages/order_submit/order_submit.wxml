@@ -87,8 +87,8 @@
     </view>
 </view>
 <view class="footer">
-    <button class="btn-pay" type="primary" size="default" loading="{{false}}"  bindtap="defaultTap" hover-class="hover-class">提交订单</button>
+    <button class="btn-pay" type="primary" data-type="payment" size="default" loading="{{false}}"  bindtap="_selectSource" hover-class="hover-class">提交订单</button>
 </view>
 
 
-<template is="modal" data="{{show_modal,temp_type,dataSource,addressIdx,deliveryIdx}}"></template>
+<template is="modal" data="{{show_modal,temp_type,dataSource,addressIdx,deliveryIdx,paymentIdx}}"></template>

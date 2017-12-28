@@ -4,6 +4,9 @@
     "pages/category/category",
     "pages/goods_detail/goods_detail",
     "pages/order_submit/order_submit",
+    "pages/order_detail/order_detail",
+    "pages/refund_edit/refund_edit",
+    "pages/refunds/refunds",
     "pages/usercenter/usercenter",
     "pages/login/login",
     "pages/404/404"

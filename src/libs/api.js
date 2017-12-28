@@ -159,6 +159,22 @@ const host = dev ? config.local : config.host;
   export const addressLst = (params,config)=>ajax(getUrl("iaddress","lst"), params, config)
   // 地址列表
   export const tickets = (params,config)=>ajax(getUrl("icashcoupon","lst"), params, config)
+  // 微页面
+  export const iad = (params,config)=>ajax(getUrl("iad","get_fld"), params, config)
+  // 分类
+  export const category = (params,config)=>ajax(getUrl("icategory","lst"), params, config)
+  //提交订单
+  export const toPay = (params,config)=>ajax(getUrl("iorder","create_order"), params, config)
+  //订单详情
+  export const ordDetail = (params,config)=>ajax(getUrl("iorder","get_one"), params, config)
+  //申请退款
+  export const refund = (params,config)=>ajax(getUrl("irefund","submit"), params, config)
+  // 发起小程序微信支付
+  export const pay = (params,config)=>ajax(getUrl("iorder","pay"), params, config)
+  // 支付状态检查
+  export const payCbk = (params,config)=>ajax(getUrl("iorder","pay_callback"), params, config)
+  // 支付状态检查
+  export const refundLst = (params,config)=>ajax(getUrl("irefund","lst"), params, config)
 /* export default */
   export default {
     TOKEN,
@@ -174,5 +190,13 @@ const host = dev ? config.local : config.host;
     wait2pay,
     payments,
     addressLst,
-    tickets
+    tickets,
+    iad,
+    toPay,
+    pay,
+    payCbk,
+    ordDetail,
+    category,
+    refund,
+    refundLst
   }

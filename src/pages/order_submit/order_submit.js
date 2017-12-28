@@ -1,4 +1,3 @@
-// test.js
 import extend from '../../libs/extends.js';
 import _ from '../../libs/deepcopy';
 import { modal } from '../template/template'
@@ -8,8 +7,6 @@ let config = _.extend(true, {
         result: null,
         goodsList: [],
         promotionPlug: [],
-        paymentList: [],
-        paymentIdx: 0,
         tickets: [],
         ticketIdx: 'nouse',
     },
@@ -17,16 +14,8 @@ let config = _.extend(true, {
         console.log(options)
         this.fetch(JSON.stringify(options));
         this._getAddress()
-        this.getPayments()
+        this._getPayments()
         this.getTickets()
-    },
-    getPayments() {
-        this.$http.payments().then(paymentList => {
-            if (!paymentList) return
-            this.setData({
-                paymentList
-            })
-        })
     },
     getTickets() {
         this.$http.tickets().then(ticketLst => {
@@ -43,8 +32,6 @@ let config = _.extend(true, {
             this.setData({ goodsList, promotionPlug, delivery_list, final_sum, result: other })
             console.log(res)
         })
-    }
+    },
 }, modal)
 extend(config);
-
-
