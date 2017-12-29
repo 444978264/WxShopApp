@@ -1,0 +1,104 @@
+<view class="box">
+    <view class="c-theme h60 panel"></view>
+    <view class="cell-group shadow">
+        <view wx:if="{{userInfo!=null}}" class="cell-item flex flex-center ">
+            <image class="w60 radius shadow" mode="widthFix" src="{{userInfo.avatarUrl}}" />
+            <text class="font14" style="padding-top:20rpx;">{{userInfo.nickName}}</text>
+        </view>
+        <view class="cell-item flex flex-row">
+           <view class="flex-item flex flex-center">
+                 <!--<image class="icon20" mode="widthFix" src="../../img/topay.svg" />-->
+                <text class="font16 weight">{{extra.balance}}</text>
+                <text class="font12 padding5">余额</text>
+            </view>
+             <view class="flex-item flex flex-center">
+                <!--<image class="icon20"  mode="widthFix" src="../../img/tosend.svg" />-->
+                <text class="font16 weight">{{count}}</text>
+                <text class="font12 padding5">购物袋</text>
+            </view>
+             <view class="flex-item flex flex-center">
+                <text class="font16 weight">{{count}}</text>
+               <!-- <image class="icon20" mode="widthFix" src="../../img/toget.svg" />-->
+                <text class="font12 padding5">代金券</text>
+            </view>
+            <view class="flex-item flex flex-center">
+                <text class="font16 weight">{{count}}</text>
+                <!--<image class="icon20" mode="widthFix" src="../../img/toget.svg" />-->
+                <text class="font12 padding5">积分</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="box cell-group">
+    <view class="shadow-border">
+        <view class="cell-item flex flex-row flex-between flex-align font14" >
+            <text>我的订单</text>
+            <view class="flex flex-row flex-center">
+                <text class="c-grey">查看全部</text>                   
+                <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="cell-item flex flex-row">
+            <view class="flex-item flex flex-center">
+                <image class="icon20" mode="widthFix" src="../../img/topay.svg" />
+                <text class="font12 padding5">待付款</text>
+            </view>
+             <view class="flex-item flex flex-center">
+                <image class="icon20"  mode="widthFix" src="../../img/tosend.svg" />
+                <text class="font12 padding5">待发货</text>
+            </view>
+             <view class="flex-item flex flex-center">
+                <image class="icon20" mode="widthFix" src="../../img/toget.svg" />
+                <text class="font12 padding5">待收货</text>
+            </view>
+             <view class="flex-item flex flex-center">
+                <image class="icon20" mode="widthFix" src="../../img/refund.svg" />
+                <text class="font12 padding5">售后</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="box cell-group">
+    <view class="shadow-border">
+        <view class="cell-item flex flex-row flex-between flex-align font14" >
+            <view class="flex flex-row flex-center">
+                <image class="icon15 margin-right10" mode="widthFix" src="../../img/local.svg"/>
+                <text class="c-grey">地址管理</text>                   
+            </view>
+             <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
+        </view>
+        <view class="line"></view>
+        <view class="cell-item flex flex-row flex-between flex-align font14" >
+            <view class="flex flex-row flex-center">
+                <image class="icon15 margin-right10" mode="widthFix" src="../../img/mobile.svg"/>
+                <text class="c-grey">手机绑定</text>                   
+            </view>
+             <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
+        </view>
+    </view>
+</view>
+<view class="box cell-group">
+    <view class="shadow-border">
+        <view class="cell-item flex flex-row flex-between flex-align font14" >
+            <view class="flex flex-row flex-center">
+                <image class="icon15 margin-right10" mode="widthFix" src="../../img/info.svg"/>
+                <text class="c-grey">关于我们</text>                   
+            </view>
+             <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
+        </view>
+    </view>
+</view>
+<view class="box cell-group">
+    <view class="shadow-border">
+        <navigator url="/pages/setting/setting" class="c-grey" hover-class="hover-class">
+            <view class="cell-item flex flex-row flex-between flex-align font14" >
+                <view class="flex flex-row flex-center">
+                    <image class="icon15 margin-right10" mode="widthFix" src="../../img/config.svg"/>
+                    <text>设置</text>                
+                </view>
+                <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
+            </view>
+        </navigator>   
+    </view>
+</view>

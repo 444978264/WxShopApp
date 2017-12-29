@@ -48,6 +48,7 @@ const host = dev ? config.local : config.host;
           if (res.data.code <= -9999||res.data.code <= -98) {
             lock = true;
             removeItemSync('token');
+            removeItemSync('userInfo');
             /***请求队列处理***/
             // 防止一个页面 多个请求 token失效 同时打开login页面 引起的错误  
             collections.forEach(function (t) {
@@ -179,9 +180,14 @@ const host = dev ? config.local : config.host;
   export const cancelRef = (params,config)=>ajax(getUrl("irefund","cancel_by_user"), params, config)
   // 取消退款申请
   export const refundAddress = (params,config)=>ajax(getUrl("iexpress","address_lst"), params, config)
+  // 购物车数量
+  export const countOfCart = (params,config)=>ajax(getUrl("icart","count"), params, config)
+  // 购物车数量
+  export const balance = (params,config)=>ajax(getUrl("iwx","get_userinfo"), params, config)
 /* export default */
   export default {
     TOKEN,
+    setToken,
     uploadUrl,
     uploadImg,
     goodsLst,
@@ -204,5 +210,7 @@ const host = dev ? config.local : config.host;
     refund,
     refundLst,
     cancelRef,
-    refundAddress
+    refundAddress,
+    countOfCart,
+    balance
   }

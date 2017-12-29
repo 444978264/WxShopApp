@@ -19,6 +19,10 @@ page{
     width:100%;
 }
 
+.radius{
+    border-radius:50%;
+}
+
 .line-container{
     padding:20rpx 0;
 }
@@ -54,6 +58,9 @@ page{
     margin-right:10rpx;
 }
 /* padding */
+.padding5{
+    padding:10rpx;
+}
 .padding20{
     padding:40rpx;
 }
@@ -118,6 +125,16 @@ page{
 .c-grey{
     color:#666;
 }
+.c-theme{
+    background:#373737;
+}
+
+.shadow{
+    box-shadow: 0 0 10rpx 2rpx rgba(0,0,0,.1)
+}
+.shadow-border{
+    box-shadow: 0 0 0rpx 0.5rpx rgba(0,0,0,.1)
+}
 
 
 /* button */
@@ -144,6 +161,12 @@ button.btn.btn-plain{
 }
 
 /* image */
+.icon12{
+    width:24rpx;
+}
+.icon15{
+    width:30rpx;
+}
 .icon20{
     width:40rpx;
 }
@@ -153,6 +176,9 @@ button.btn.btn-plain{
 .icon40{
     width:80rpx;
 }
+.w60{
+    width:120rpx;
+}
 .w80{
     width:160rpx;
 }
@@ -161,6 +187,9 @@ button.btn.btn-plain{
 }
 .w100{
     width:200rpx;
+}
+.h60{
+    height:120rpx;
 }
 .h80{
     height:160rpx;
@@ -175,5 +204,14 @@ button.btn.btn-plain{
 /* cell */
 .cell{
     padding-right:60rpx;
+    position:relative
+}
+
+.cell-group{
+    margin-bottom:20rpx;
+}
+.cell-item{
+    padding:20rpx;
+    background:#fff;
     position:relative
 }

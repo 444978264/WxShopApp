@@ -8,13 +8,14 @@
     "pages/refund_edit/refund_edit",
     "pages/refunds/refunds",
     "pages/refund_detail/refund_detail",
+    "pages/setting/setting",
     "pages/usercenter/usercenter",
     "pages/login/login",
     "pages/404/404"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#000",
+    "navigationBarBackgroundColor": "#373737",
     "navigationBarTitleText": "广告红包",
     "navigationBarTextStyle": "#fff",
     "backgroundColor": "#eeeeee",

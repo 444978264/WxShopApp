@@ -68,7 +68,7 @@
         <text>会员优惠</text>
         <text>{{result.reduce}}</text>
     </view>
-    <view wx:for="{{promotionPlug}}" wx:key="{{index}}" class="flex flex-between flex-row font14">
+    <view wx:if="{{item.reduce>0}}" wx:for="{{promotionPlug}}" wx:key="{{index}}" class="flex flex-between flex-row font14">
         <text>{{item.name}}{{item.freefreight==1?"包邮":''}}</text>
         <text>-￥{{item.reduce}}</text>
     </view>

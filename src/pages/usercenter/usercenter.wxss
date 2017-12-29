@@ -1,0 +1,11 @@
+.box{
+    padding:0 40rpx;
+    box-sizing:border-box;
+    position:relative;
+}
+.panel{
+    position: absolute;
+    top:0;
+    left: 0;
+    width:100%;
+}

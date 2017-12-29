@@ -39,7 +39,9 @@
 .flex-between{
     justify-content:space-between;
 }
-
+.flex-align{
+    align-items:center
+}
 .flex-around{
     justify-content:space-around;
     align-items:center;
