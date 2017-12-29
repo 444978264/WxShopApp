@@ -1,6 +1,7 @@
 import extend from '../../libs/extends.js';
 extend({
     $openRefresh() {
+        this.paramsInit();
         return true
     },
     data: {
@@ -10,6 +11,12 @@ extend({
     pagesize: 20,
     has_next: true,
     loading: false,
+    paramsInit() {
+        this.page = 1;
+        this.has_next = true;
+        let list = [];
+        this.setData({ list })
+    },
     onLoad() {
         this.fetch()
     },
