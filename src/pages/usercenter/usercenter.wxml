@@ -31,28 +31,30 @@
 </view>
 <view class="box cell-group">
     <view class="shadow-border">
-        <view class="cell-item flex flex-row flex-between flex-align font14" >
-            <text>我的订单</text>
-            <view class="flex flex-row flex-center">
-                <text class="c-grey">查看全部</text>                   
-                <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
+        <navigator url="/pages/orders/orders" class="c-grey" hover-class="hover-class">
+            <view class="cell-item flex flex-row flex-between flex-align font14" >
+                <text>我的订单</text>
+                <view class="flex flex-row flex-center">
+                    <text class="c-grey">查看全部</text>                   
+                    <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
+                </view>
             </view>
-        </view>
+        </navigator>   
         <view class="line"></view>
         <view class="cell-item flex flex-row">
             <view class="flex-item flex flex-center">
-                <image class="icon20" mode="widthFix" src="../../img/topay.svg" />
+                <image class="icon20" mode="widthFix" data-type="refunds" src="../../img/topay.svg" />
                 <text class="font12 padding5">待付款</text>
             </view>
              <view class="flex-item flex flex-center">
-                <image class="icon20"  mode="widthFix" src="../../img/tosend.svg" />
+                <image class="icon20"  mode="widthFix" data-type="refunds" src="../../img/tosend.svg" />
                 <text class="font12 padding5">待发货</text>
             </view>
              <view class="flex-item flex flex-center">
-                <image class="icon20" mode="widthFix" src="../../img/toget.svg" />
+                <image class="icon20" mode="widthFix" data-type="refunds" src="../../img/toget.svg" />
                 <text class="font12 padding5">待收货</text>
             </view>
-             <view class="flex-item flex flex-center">
+            <view class="flex-item flex flex-center" data-type="refunds" bindtap="toUrl">
                 <image class="icon20" mode="widthFix" src="../../img/refund.svg" />
                 <text class="font12 padding5">售后</text>
             </view>

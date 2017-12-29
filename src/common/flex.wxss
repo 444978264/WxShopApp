@@ -36,11 +36,18 @@
     justify-content:flex-start;
     align-items:center;
 }
+.flex-right{
+    justify-content:flex-end;
+    align-items:center;
+}
 .flex-between{
     justify-content:space-between;
 }
 .flex-align{
     align-items:center
+}
+.flex-top{
+    align-items:flex-start
 }
 .flex-around{
     justify-content:space-around;

@@ -184,6 +184,8 @@ const host = dev ? config.local : config.host;
   export const countOfCart = (params,config)=>ajax(getUrl("icart","count"), params, config)
   // 购物车数量
   export const balance = (params,config)=>ajax(getUrl("iwx","get_userinfo"), params, config)
+  // 订单列表
+  export const orderLst = (params,config)=>ajax(getUrl("iorder","lst"), params, config)
 /* export default */
   export default {
     TOKEN,
@@ -212,5 +214,6 @@ const host = dev ? config.local : config.host;
     cancelRef,
     refundAddress,
     countOfCart,
-    balance
+    balance,
+    orderLst
   }

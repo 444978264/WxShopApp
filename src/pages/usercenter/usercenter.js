@@ -1,8 +1,7 @@
 // test.js
 import extend from '../../libs/extends.js';
-const app = getApp();
 extend({
-    $openRefresh(){
+    $openRefresh() {
         return true
     },
     data: {
@@ -29,6 +28,10 @@ extend({
         this.setData({ userInfo })
         this.getCount();
         this.fetch();
+    },
+    toUrl(e) {
+        let { type } = this.dataset(e);
+        this.$router.push(type)
     },
     onShow() {
         this.init();

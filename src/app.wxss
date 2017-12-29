@@ -9,7 +9,7 @@
 @import '/pages/template/modal/modal.wxss';
 
 page{
-    background:#f0f2f4
+    background:#f0f2f4;
 }
 
 .footer{
@@ -18,7 +18,13 @@ page{
     left:0;
     width:100%;
 }
-
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9
+}
 .radius{
     border-radius:50%;
 }
@@ -100,34 +106,44 @@ page{
 }
 /* fontsize */
 .font10{
-    font-size:20rpx;
+    font-size:20rpx !important;
 }
 .font12{
-    font-size:24rpx;
+    font-size:24rpx !important;
 }
 .font14{
-    font-size:28rpx;
+    font-size:28rpx !important;
 }
 .font15{
-    font-size:30rpx;
+    font-size:30rpx !important;
 }
 .font16{
-    font-size:32rpx;
+    font-size:32rpx !important;
 }
 .font18{
-    font-size:36rpx;
+    font-size:36rpx !important;
 }
 .font20{
-    font-size:40rpx;
+    font-size:40rpx !important;
 }
 
 /* color */
 .c-grey{
     color:#666;
 }
+.fc-theme{
+    color:#373737;
+}
 .c-theme{
     background:#373737;
 }
+.c-ef{
+    background:#efefef !important;
+}
+.c-ddd{
+    background:#ddd !important;
+}
+
 
 .shadow{
     box-shadow: 0 0 10rpx 2rpx rgba(0,0,0,.1)
@@ -140,8 +156,9 @@ page{
 /* button */
 
 button.btn{
-    border:0;
+    border:0 !important;
     border-radius:0;
+    margin:0;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -152,7 +169,7 @@ button.btn.btn-default{
     color:#fff;
 }
 button.btn.btn-plain{
-    border:4rpx solid rgb(55, 55, 55);
+    border:4rpx solid rgb(55, 55, 55)  !important;
     color:rgb(55, 55, 55)
 }
 
@@ -188,6 +205,10 @@ button.btn.btn-plain{
 .w100{
     width:200rpx;
 }
+
+.h50{
+    height:100rpx;
+}
 .h60{
     height:120rpx;
 }
@@ -214,4 +235,18 @@ button.btn.btn-plain{
     padding:20rpx;
     background:#fff;
     position:relative
+}
+.cell-item::after{
+    position:absolute;
+    content:'';
+    bottom:8rpx;
+    width:30%;
+    border-radius:2rpx;
+    height:4rpx;
+    background:#373737;
+    transform: scale(0);
+    transition: transform .5s ease;
+}
+.cell-active::after{
+    transform: scale(1);
 }

@@ -68,8 +68,8 @@
         <text>{{result.reduce}}</text>
     </view>
     <view wx:for="{{result.promotionPlug}}" wx:key="{{index}}" class="flex flex-between flex-row font14">
-        <text>{{item.name}}{{item.freefreight==1?"包邮":''}}</text>
-        <text>-￥{{item.reduce}}</text>
+        <text>{{item.prom_name}}{{item.freefreight==1?"包邮":''}}</text>
+        <text>-￥{{item.payment_reduced}}</text>
     </view>
     <view style="padding:20rpx 0;">
         <view class="line"></view>
