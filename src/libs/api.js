@@ -173,8 +173,12 @@ const host = dev ? config.local : config.host;
   export const pay = (params,config)=>ajax(getUrl("iorder","pay"), params, config)
   // 支付状态检查
   export const payCbk = (params,config)=>ajax(getUrl("iorder","pay_callback"), params, config)
-  // 支付状态检查
+  // 退款申请列表
   export const refundLst = (params,config)=>ajax(getUrl("irefund","lst"), params, config)
+  // 取消退款申请
+  export const cancelRef = (params,config)=>ajax(getUrl("irefund","cancel_by_user"), params, config)
+  // 取消退款申请
+  export const refundAddress = (params,config)=>ajax(getUrl("iexpress","address_lst"), params, config)
 /* export default */
   export default {
     TOKEN,
@@ -198,5 +202,7 @@ const host = dev ? config.local : config.host;
     ordDetail,
     category,
     refund,
-    refundLst
+    refundLst,
+    cancelRef,
+    refundAddress
   }

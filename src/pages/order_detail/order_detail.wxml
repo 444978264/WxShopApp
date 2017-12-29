@@ -17,19 +17,22 @@
     module.exports.parse = parse
     module.exports.parseNum = parseNum
 </wxs>
-<view wx:if="{{result.items.length}}" wx:for="{{result.items}}" wx:key="{{index}}" class="container flex flex-row">
-    <image style="width:180rpx;height:180rpx;margin-right:20rpx;" mode="scaleToFill" src="http://www.lastmall.com{{item.img}}" />
-    <view class="flex flex-column flex-between font14">
-        <text>{{item.name_value}}</text>
-        <view>
-            <text wx:for="{{tools.parse(item.spec_array)}}" wx:key="idx" wx:for-index="idx" wx:for-item="val">{{val.name}}:{{val.value}}</text>
+<view class="container">
+    <view wx:if="{{result.items.length}}" wx:for="{{result.items}}" wx:key="{{index}}" class="flex flex-row">
+        <image style="width:180rpx;height:180rpx;margin-right:20rpx;" mode="scaleToFill" src="http://www.lastmall.com{{item.img}}" />
+        <view class="flex flex-column flex-between font14">
+            <text>{{item.name_value}}</text>
+            <view>
+                <text wx:for="{{tools.parse(item.spec_array)}}" wx:key="idx" wx:for-index="idx" wx:for-item="val">{{val.name}}:{{val.value}}</text>
+            </view>
+            <text>{{item.real_price}}x{{item.goods_nums}}</text>
         </view>
-        <text>{{item.real_price}}x{{item.goods_nums}}</text>
-    </view>
-    <view wx:if="{{index!==goodsList.length-1}}" style="padding:20rpx 0;">
-        <view class="line"></view>
+        <view wx:if="{{index!==goodsList.length-1}}" style="padding:20rpx 0;">
+            <view class="line"></view>
+        </view>
     </view>
 </view>
+
 <view class="container">
     <view style="padding-right:60rpx;position:relative">
         <view class="flex font14">

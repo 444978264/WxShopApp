@@ -1,0 +1,68 @@
+<view class="container text-center flex flex-center">
+    <text class="font15">目前订单状态：<text class="weight600">{{result.status_name}}</text></text>
+    <view class="line-container"></view>
+    <view class="text-left" style="width:100%;">        
+        <text class="font15">订单号 <text class="c-grey">{{result.order_no}}</text>  </text>
+    </view>
+    <view class="text-left" style="width:100%;">        
+        <text class="font15">退款号 <text class="c-grey">{{result.refund_no}}</text>  </text>
+    </view>
+    <view class="text-left" style="width:100%;">        
+        <text class="font15">总金额 <text class="c-grey">{{result.amount}}</text>  </text>
+    </view>
+</view>
+<wxs module="tools">
+    function parse(data){
+        return typeof data == "string" ?JSON.parse(data):data
+    }
+    function parseNum(data){
+        return +data
+    }
+    module.exports.parse = parse
+    module.exports.parseNum = parseNum
+</wxs>
+<view class="container">
+    <view wx:if="{{result.items.length}}" wx:for="{{result.items}}" wx:key="{{index}}" class="flex flex-row">
+        <image class="w90 h90 margin-right10" mode="scaleToFill" src="http://www.lastmall.com{{item.img}}" />
+        <view class="flex flex-column flex-between font14">
+            <text>{{item.name_value}}</text>
+            <view>
+                <text wx:for="{{tools.parse(item.spec_array)}}" wx:key="idx" wx:for-index="idx" wx:for-item="val">{{val.name}}:{{val.value}}</text>
+            </view>
+            <text>{{item.real_price}}x{{item.goods_nums}}</text>
+        </view>
+        <view wx:if="{{index!==goodsList.length-1}}" class="line-container">
+            <view class="line"></view>
+        </view>
+    </view>
+</view>
+
+<view class="container">
+    <block wx:if="{{refundAddress!=null}}">
+        <view class="cell">
+            <view class="flex font14">
+                <text class="weight600">退货地址</text>
+                <view style="padding:10rpx 0;"></view>
+                <text class="font12">{{refundAddress.ship_user_name}}({{refundAddress.mobile}})</text>
+                <text class="font12">{{refundAddress.province_name}}{{refundAddress.city_name}}{{refundAddress.area_name}}{{refundAddress.address}}</text>
+            </view>
+        </view>
+        <view class="line-container">
+            <view class="line"></view>
+        </view>
+    </block>
+    <view class="cell">
+        <view wx:if="delivery_list.length" class="flex font14">
+            <text class="weight600">申请原因</text>
+            <view style="padding:10rpx 0;"></view>
+            <view class="font12">{{result.content}}</view>
+        </view>
+    </view>
+</view>
+
+<view class="container flex font15">
+    <text> 创建时间<text class="padding-left10 c-grey">{{result.time}}</text></text>
+    <text> 处理时间<text class="padding-left10 c-grey">{{result.dispose_time||'未处理'}}</text></text>
+    <text> 处理结果<text class="padding-left10 c-grey">{{result.status_name}}</text></text>
+    <text> 处理建议<text class="padding-left10 c-grey">{{result.dispose_idea||'未回复'}}</text></text>
+</view>

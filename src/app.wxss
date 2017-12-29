@@ -3,11 +3,14 @@
 @import '/common/public.wxss';
 
 @import '/pages/template/popover/popover.wxss';
+@import '/pages/template/emptylist/emptylist.wxss';
 @import '/pages/template/article/article.wxss';
 @import '/pages/template/goods/goods.wxss';
 @import '/pages/template/modal/modal.wxss';
 
-
+page{
+    background:#f0f2f4
+}
 
 .footer{
     position:fixed;
@@ -24,30 +27,71 @@
     width:100%;
     background:#efefef;
 }
-page{
-    background:#f0f2f4
-}
-
-button.btn{
-    border:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
 
 .container{
     padding:20rpx;
     margin-bottom:20rpx;
     background:#fff;
+    position:relative
 }
-
+/* margin */
+.margin20{
+    margin:40rpx;
+}
+.margin-left20{
+    margin-left:40rpx;
+}
+.margin-right20{
+    margin-right:40rpx;
+}
+.margin10{
+    margin:20rpx;
+}
+.margin-left10{
+    margin-left:20rpx;
+}
+.margin-right10{
+    margin-right:10rpx;
+}
+/* padding */
+.padding20{
+    padding:40rpx;
+}
+.padding20-0{
+    padding:40rpx 0;
+}
+.padding0-20{
+    padding:0 40rpx;
+}
+.padding-left20{
+    padding-left:40rpx;
+}
+.padding-right20{
+    padding-right:40rpx;
+}
+.padding10{
+    padding:20rpx;
+}
+.padding10-0{
+    padding:20rpx 0;
+}
+.padding0-10{
+    padding:0 20rpx;
+}
+.padding-left10{
+    padding-left:20rpx;
+}
+.padding-right10{
+    padding-right:10rpx;
+}
+/* font-weight */
 .weight600{
     font-weight:600
 }
 .weight700{
     font-weight:700
 }
-
+/* fontsize */
 .font10{
     font-size:20rpx;
 }
@@ -56,6 +100,9 @@ button.btn{
 }
 .font14{
     font-size:28rpx;
+}
+.font15{
+    font-size:30rpx;
 }
 .font16{
     font-size:32rpx;
@@ -67,6 +114,66 @@ button.btn{
     font-size:40rpx;
 }
 
+/* color */
+.c-grey{
+    color:#666;
+}
+
+
+/* button */
+
+button.btn{
+    border:0;
+    border-radius:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+button.btn.btn-default{
+    background:rgb(55, 55, 55);
+    border:0;
+    color:#fff;
+}
+button.btn.btn-plain{
+    border:4rpx solid rgb(55, 55, 55);
+    color:rgb(55, 55, 55)
+}
+
 .hover-class{
     opacity:.8;
+}
+
+/* image */
+.icon20{
+    width:40rpx;
+}
+.icon30{
+    width:60rpx;
+}
+.icon40{
+    width:80rpx;
+}
+.w80{
+    width:160rpx;
+}
+.w90{
+    width:180rpx;
+}
+.w100{
+    width:200rpx;
+}
+.h80{
+    height:160rpx;
+}
+.h90{
+    height:180rpx;
+}
+.h100{
+    height:200rpx;
+}
+
+/* cell */
+.cell{
+    padding-right:60rpx;
+    position:relative
 }

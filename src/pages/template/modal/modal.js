@@ -118,29 +118,32 @@ export default {
         }).then(res => {
             if (!res) return
             let { order_id } = res[0]
-            return this.$http.pay({
+            this.$http.pay({
                 order_id
-            })
-        }).then(res => {
-            if (!res) return
-            let { appId, ...other } = res;
-            this.setData({
-                show_modal: false
-            }, () => {
-                wx.requestPayment({
-                    ...other,
-                    success: (res) => {
-                        console.log(res)
-                        this.$http.payCbk({
-                            order_id
-                        }).then(res => {
-                            if (!res) return
-                            //跳到订单详情里
-                        })
-                    },
-                    fail: (err) => {
-                        console.log(err)
-                    }
+            }).then(res => {
+                if (!res) return
+                let { appId, ...other } = res;
+                this.setData({
+                    show_modal: false
+                }, () => {
+                    wx.requestPayment({
+                        ...other,
+                        success: (res) => {
+                            console.log(res)
+                            this.$http.payCbk({
+                                order_id
+                            }).then(res => {
+                                if (!res) return
+                                //跳到订单详情里
+                                this.$router.redirect("order_detail", {
+                                    id: order_id
+                                })
+                            })
+                        },
+                        fail: (err) => {
+                            console.log(err)
+                        }
+                    })
                 })
             })
         })
