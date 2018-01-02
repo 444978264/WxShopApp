@@ -10,6 +10,7 @@
     "pages/refunds/refunds",
     "pages/refund_detail/refund_detail",
     "pages/setting/setting",
+    "pages/address_list/address_list",
     "pages/usercenter/usercenter",
     "pages/login/login",
     "pages/404/404"
@@ -17,7 +18,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#373737",
-    "navigationBarTitleText": "广告红包",
+    "navigationBarTitleText": "云锐商城",
     "navigationBarTextStyle": "#fff",
     "backgroundColor": "#eeeeee",
     "enablePullDownRefresh": true

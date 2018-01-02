@@ -158,7 +158,11 @@ const host = dev ? config.local : config.host;
   export const payments = (params,config)=>ajax(getUrl("icart","lst_payment"), params, config)
   // 地址列表
   export const addressLst = (params,config)=>ajax(getUrl("iaddress","lst"), params, config)
-  // 地址列表
+  // 地址编辑
+  export const addressUpdate = (params,config)=>ajax(getUrl("iaddress","update"), params, config)
+  // 地址添加
+  export const addressAdd = (params,config)=>ajax(getUrl("iaddress","add"), params, config)
+  // 代金券列表
   export const tickets = (params,config)=>ajax(getUrl("icashcoupon","lst"), params, config)
   // 微页面
   export const iad = (params,config)=>ajax(getUrl("iad","get_fld"), params, config)
@@ -221,5 +225,7 @@ const host = dev ? config.local : config.host;
     balance,
     orderLst,
     confirmOrder,
-    cancelOrder
+    cancelOrder,
+    addressUpdate,
+    addressAdd
   }

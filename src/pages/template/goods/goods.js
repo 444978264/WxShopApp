@@ -16,7 +16,7 @@ export default {
         wx.createSelectorQuery().selectAll(`.${parent}`).boundingClientRect(rects => {
             let { height } = rects[0];
             this._siteComputed(height, (left, top) => {
-                console.log(left, top)
+                // console.log(left, top)
                 let {waterfallStyle,viewHeight} = this.data;
                 waterfallStyle[id] = {
                     left,

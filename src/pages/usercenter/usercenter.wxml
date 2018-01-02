@@ -63,6 +63,7 @@
 </view>
 <view class="box cell-group">
     <view class="shadow-border">
+        <navigator url="/pages/address_list/address_list" class="c-grey" hover-class="hover-class">
         <view class="cell-item flex flex-row flex-between flex-align font14" >
             <view class="flex flex-row flex-center">
                 <image class="icon15 margin-right10" mode="widthFix" src="../../img/local.svg"/>
@@ -70,7 +71,9 @@
             </view>
              <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
         </view>
+        </navigator>   
         <view class="line"></view>
+        <navigator url="/pages/address_list/address_list" class="c-grey" hover-class="hover-class">
         <view class="cell-item flex flex-row flex-between flex-align font14" >
             <view class="flex flex-row flex-center">
                 <image class="icon15 margin-right10" mode="widthFix" src="../../img/mobile.svg"/>
@@ -78,6 +81,7 @@
             </view>
              <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
         </view>
+        </navigator>   
     </view>
 </view>
 <view class="box cell-group">

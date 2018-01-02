@@ -1,0 +1,18 @@
+<import src="../template/emptylist/emptylist.wxml" />
+<view class="container font14 flex flex-center">
+    <text>地址管理</text>
+</view>
+<block wx:if="{{list.length}}">   
+    <view bindtap="edit" data-id="{{item.id}}" wx:for="{{list}}" wx:key="{{index}}" class="container flex flex-row flex-between flex-align font14">
+        <view class="flex ">
+            <text>{{item.accept_name}}({{item.mobile}})</text>
+            <text>{{item.province_name}}{{item.city_name}}{{item.area_name}}{{item.address}}</text>
+        </view>
+        <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
+    </view>
+</block>
+<view class="container flex flex-row flex-center" style="background:transparent;">
+    <view bindtap="add" class="flex-item text-center padding10-0 view-add">
+        <text>+</text>
+    </view>
+</view>

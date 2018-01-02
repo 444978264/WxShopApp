@@ -112,8 +112,12 @@ export const removeItemSync = wx.removeStorageSync;
 export const clearStorage = wx.clearStorage;
 export const clearStorageSync = wx.clearStorageSync;
 
+// 获取用户的当前设置
+export const $getSetting = success => wx.getSetting({ success })
+
 export default {
   formatTime,
+  $getSetting,
   $loading,
   $shareMenu,
   $message,
