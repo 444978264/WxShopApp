@@ -2,7 +2,7 @@
 import extend from '../../libs/extends.js';
 import _ from '../../libs/deepcopy';
 import { modal } from '../template/template'
-let init = _.extend(true,{
+let init = _.extend(true, {
     $openRefresh() {
         this.paramsInit();
         return true
@@ -95,15 +95,25 @@ let init = _.extend(true,{
             this.fetch();
         })
     },
-    onLoad() {
-        this.fetch();     
+    onLoad({ pay, dist, type }) {
+        // let { pay, dist } = options;
+        this.order_status = {
+            pay,
+            dist
+        }
+        let idx = this.data.navs.indexOf(type);
+        let active = idx > -1 ? idx : 0;
+        this.setData({
+            active
+        })
+        this.fetch();
     },
-    onShow(){
+    onShow() {
         this._getPayments();
     },
     onReachBottom() {
         if (!this.has_next) return;
         this.fetch()
     }
-},modal)
+}, modal)
 extend(init);

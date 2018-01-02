@@ -30,8 +30,17 @@ extend({
         this.fetch();
     },
     toUrl(e) {
-        let { type } = this.dataset(e);
-        this.$router.push(type)
+        let { pay, dist,type } = this.dataset(e);
+        console.log(pay, dist,123132)
+        if (pay >= 0 && dist >= 0) {
+            this.$router.push("orders", {
+                pay,
+                dist,
+                type
+            })
+        } else {
+            this.$router.push("refunds")
+        }
     },
     onShow() {
         this.init();

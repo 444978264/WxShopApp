@@ -42,19 +42,19 @@
         </navigator>   
         <view class="line"></view>
         <view class="cell-item flex flex-row">
-            <view class="flex-item flex flex-center">
-                <image class="icon20" mode="widthFix" data-type="refunds" src="../../img/topay.svg" />
+            <view class="flex-item flex flex-center" bindtap="toUrl" data-pay="0" data-dist="0" data-type="待付款">
+                <image class="icon20" mode="widthFix" src="../../img/topay.svg" />
                 <text class="font12 padding5">待付款</text>
             </view>
-             <view class="flex-item flex flex-center">
-                <image class="icon20"  mode="widthFix" data-type="refunds" src="../../img/tosend.svg" />
+             <view class="flex-item flex flex-center" bindtap="toUrl" data-pay="1" data-dist="0" data-type="待发货">
+                <image class="icon20"  mode="widthFix" src="../../img/tosend.svg" />
                 <text class="font12 padding5">待发货</text>
             </view>
-             <view class="flex-item flex flex-center">
-                <image class="icon20" mode="widthFix" data-type="refunds" src="../../img/toget.svg" />
+             <view class="flex-item flex flex-center" bindtap="toUrl" data-pay="1" data-dist="1" data-type="待收货">
+                <image class="icon20" mode="widthFix" src="../../img/toget.svg" />
                 <text class="font12 padding5">待收货</text>
             </view>
-            <view class="flex-item flex flex-center" data-type="refunds" bindtap="toUrl">
+            <view class="flex-item flex flex-center" bindtap="toUrl">
                 <image class="icon20" mode="widthFix" src="../../img/refund.svg" />
                 <text class="font12 padding5">售后</text>
             </view>
