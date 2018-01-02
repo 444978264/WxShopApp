@@ -1,4 +1,21 @@
 <import  src="../template/goods/goods.wxml" />
-<scroll-view class="goods-list"  scroll-y="true"lower-threshold="{{100}}" style="height:100%" bindscrolltolower="fetch">
+<import  src="../template/emptylist/emptylist.wxml" />
+<wxs module="tools">
+    function view(id){
+        return 'view'+id
+    }
+    module.exports.view = view
+</wxs> 
+<scroll-view class="flex flex-row header view flex-center" scroll-x="{{true}}" scroll-into-view="{{tools.view(viewid)}}">
+    <view class="cell-group flex flex-row">
+        <view bindtap="selectNavs" id="view{{item.id}}" class="cell-item navs font14 {{viewid===item.id?'cell-active':''}}" data-viewid="{{item.id}}" wx:for="{{navs}}" wx:key="{{index}}">
+            <text>{{item.name}}</text>
+        </view>
+    </view>
+</scroll-view>
+
+<scroll-view class="goods-list" wx:if="{{list.length}}" scroll-y="true" lower-threshold="{{100}}" style="height:100%" bindscrolltolower="fetch">
     <template wx:for="{{list}}" wx:key="{{index}}" is="goods" data="{{...item,...waterfallStyle[item.id]}}"></template>
 </scroll-view>
+
+<template wx:else is="empty"></template>

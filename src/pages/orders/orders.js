@@ -61,6 +61,7 @@ let init = _.extend(true, {
         })
     },
     selectNav(e) {
+        if (this.loading) return
         let { active, status } = this.dataset(e);
         switch (status) {
             case '待付款':
@@ -93,6 +94,35 @@ let init = _.extend(true, {
         this.setData({ active }, () => {
             this.paramsInit();
             this.fetch();
+        })
+    },
+    cancel(e) {
+        let { id, no, idx } = this.dataset(e);
+        this.$message(`确定取消"${no}"订单嘛?`, {
+            success: res => {
+                this.$http.cancelOrder({
+                    id
+                }).then(res => {
+                    if (!res) return
+                    let { list } = this.data;
+                    list.splice(idx, 1);
+                    this.setData({ list })
+                    console.log(res)
+                })
+            },
+            showCancel: true
+        })
+    },
+    confirm(e) {
+        let { id, idx } = this.dataset(e);
+        this.$http.confirmOrder({
+            id
+        }).then(res => {
+            if (!res) return
+            let { list } = this.data;
+            list.splice(idx, 1);
+            this.setData({ list })
+            console.log(res)
         })
     },
     onLoad({ pay, dist, type }) {

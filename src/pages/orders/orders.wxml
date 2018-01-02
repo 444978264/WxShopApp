@@ -8,6 +8,10 @@
 </view>
 <view class="h50"></view>
 <wxs module="tools">
+    var dis = {
+        "1": "已发货",
+        "2": "部分发货"
+    }
     function order_type(obj) {
         if (obj['refund_count'] > 0) {
             return "退款申请中";
@@ -58,11 +62,11 @@
         <view class="line"></view>
         <view class="flex-item cell-item flex flex-row flex-align flex-between weight600">
             <view>
-                <button data-id="{{item.oid}}" class="font12 btn" wx:if="{{item.status==1}}" type="default" size="mini" plain hover-class="hover-class">取消订单</button>
+                <button data-no="{{item.order_no}}" data-idx="{{index}}" data-id="{{item.oid}}" bindtap="cancel" class="font12 btn" wx:if="{{item.status==1}}" type="default" size="mini" plain hover-class="hover-class">取消订单</button>
             </view>
             <view class="flex flex-row flex-center">
                 <button bindtap="_selectSource" data-type="payment" data-oid="{{item.oid}}" class="font12 btn" wx:if="{{item.status==1}}" type="default" size="mini" plain hover-class="hover-class">立即支付</button>
-                <button data-id="{{item.oid}}" class="font12 btn" wx:if="{{item.status==2&&item.distribution_status==1}}" type="default" size="mini" plain hover-class="hover-class">确认收货</button>
+                <button data-id="{{item.oid}}" data-idx="{{index}}" bindtap="confirm" class="font12 btn" wx:if="{{item.status==2&&item.distribution_status==1}}" type="default" size="mini" plain hover-class="hover-class">确认收货</button>
                 <navigator class="font12 padding0-10" url="/pages/order_detail/order_detail?id={{item.oid}}" navigate hover-class="hover-class">详情</navigator>
             </view>
         </view>

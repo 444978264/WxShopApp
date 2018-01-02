@@ -4,7 +4,13 @@ page{
 
 .goods-list{
     position:relative;
-    padding:10rpx;
+    padding:85rpx 10rpx 10rpx 10rpx;
     box-sizing:border-box;
     background:#f0f2f4;
+}
+.navs{
+    white-space: nowrap;
+}
+.view{
+    background:#fff;
 }
