@@ -16,6 +16,7 @@ let config = _.extend(true, {
     pagesize: 20,
     has_next: true,
     loading: false,
+    keyword:'',
     paramsInit() {
         this.page = 1;
         this.keyword = '';
@@ -37,6 +38,7 @@ let config = _.extend(true, {
             page: this.page,
             pagesize: this.pagesize,
             class: this.data.viewid > 0 ? this.data.viewid : '',
+            search_json:this.keyword
         }).then(res => {
             this.loading = false;
             if (!res) return
@@ -59,13 +61,21 @@ let config = _.extend(true, {
     },
     selectNavs(e) {
         let { viewid } = this.dataset(e);
+        if(viewid == this.data.viewid)return
         this.setData({ viewid }, () => {
             this.removeItem('keyword');
             this.paramsInit();
             this.fetch();
         })
     },
-    onLoad: function () {
+    onLoad: function (options) {
+        this.keyword = options.keyword || '';
+        let id = options.class;
+        if(id){
+            this.setData({
+                viewid:id
+            })
+        }
         this.fetch();
         this.category();
     }

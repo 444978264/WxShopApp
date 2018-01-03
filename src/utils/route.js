@@ -23,8 +23,32 @@ class Router {
         let str = this.serialize(params);
         wx.navigateTo({
             url: `/pages/${path}/${path}${str}`,
-            complete: () => {
+            complete: (err) => {
                 this.lazyChange();
+            },
+            fail:({errMsg})=>{
+                if(errMsg.includes('tabbar')){
+                    console.log(errMsg)     
+                    this.tab(path, true)
+                }
+            }
+        })
+    }
+    //跳转页面---保留当前页面，跳转到应用内的某个页面，
+    tab(path, go) {
+        this.go = go || false;
+        if (this.loading && !this.go) {
+            return
+        } else {
+            this.loading = true;
+        }
+        wx.switchTab({
+            url: `/pages/${path}/${path}`,
+            complete: (err) => {
+                this.lazyChange();
+            },
+            fail:({errMsg})=>{
+                console.log(errMsg)
             }
         })
     }
@@ -41,6 +65,12 @@ class Router {
             url: `/pages/${path}/${path}${str}`,
             complete: () => {
                 this.lazyChange();
+            },
+            fail:({errMsg})=>{
+                if(errMsg.includes('tabbar')){
+                    console.log(errMsg)     
+                    this.tab(path, true)
+                }
             }
         })
     }
@@ -57,6 +87,12 @@ class Router {
             url: `/pages/${path}/${path}${str}`,
             complete: () => {
                 this.lazyChange();
+            },
+            fail:({errMsg})=>{
+                if(errMsg.includes('tabbar')){
+                    console.log(errMsg)     
+                    this.tab(path, true)
+                }
             }
         })
     }

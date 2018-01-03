@@ -13,6 +13,16 @@ page{
     background:#f0f2f4;
 }
 
+.label{
+    display: inline-block;
+    padding:2rpx 10rpx;
+    color: #fff;
+    background-color: #e31436;
+    text-align: center;
+    margin-right:10rpx;
+    margin-bottom:6rpx;
+}
+
 .footer{
     position:fixed;
     bottom:0;

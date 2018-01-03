@@ -1,7 +1,9 @@
 var host = "http://www.lastmall.com"
 
+var page = '/pages/products/products'
+
+var reg = getRegExp("^(https|http|ftp|rtsp|mms)");
 function imgUrl(url) {
-    var reg = getRegExp("^(https|http|ftp|rtsp|mms)")
     if (reg.test(url)) {
         return url
     } else if (url[0] == '/') {
@@ -12,12 +14,21 @@ function imgUrl(url) {
 }
 function linkTo(url) {
     var path = '';
-    var reg = getRegExp("[&|\?]((?!controller|action).)*=([^&?]*)", 'm');  
-    path = url.match(reg).join('');
-    if (path[0] == "&") {
-        path[0] = "?"
+    if(reg.test(url)){
+        return url
+    }else{
+        var regProp = getRegExp("[&|\?]((?!controller|action).)*=([^&?]*)", 'g');  
+        path = url.match(regProp);
+        if(path&&"Array" === path.constructor && path.length){
+            path = path.join('');
+            if (path[0] == "&") {
+                 path = page + '?' + path.substring(1)
+            }
+        }else{
+            path = page
+        }
+        return path
     }
-    return path
 }
 
 function parse(data){

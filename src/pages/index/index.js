@@ -54,7 +54,23 @@ extend({
             this.setData({ result })
         })
     },
-
+    setVal({detail}){
+        this.inp_val = JSON.stringify([{
+            field:'name',
+            oper:'like',
+            keyword:detail.value
+        }]);
+    },
+    searchResult({type,...other}){
+        switch(type){
+            case "confirm":
+                this.setVal(other);
+            break;
+        }
+        this.$router.push('products',{
+            keyword:this.inp_val
+        })
+    },
     onLoad() {
         this.fetch()
     },

@@ -15,11 +15,11 @@
                 <text class="sub-info text-right flex-item" wx:if="{{result.tax_price>0}}">预估税费{{result.tax_price}}</text>
             </view>            
         </view>
-        <view style="padding:20rpx 0;">
+        <view class="line-container">
             <view class="line"></view>
         </view>
-        <view style="padding-right:80rpx;position:relative">
-            <span class="warp-hide" style="font-size:32rpx">
+        <view class="cell">
+            <span class="warp-hide font16">
                 {{result.name}}
             </span>
             <button class="share" open-type="share" plain size="mini">
@@ -27,9 +27,21 @@
             </button>   
         </view>
     </view>
+    <!-- 活动 -->
+    <view wx:if="{{promotion.length}}" class="container content-body">
+        <view class="font12 flex flex-row">
+            <view class="margin-right10">    
+                <text class="nowarp">促销 </text>
+            </view>
+            <view>
+                <text class="label " wx:for="{{promotion}}" wx:key="{{index}}">{{item.name}}</text>
+            </view>
+        </view>   
+    </view>
+    <!-- 规格 -->
     <view wx:if="{{spec_array.length}}" class="container content-body">
-        <view style="padding-right:80rpx;position:relative">
-            <span class="warp-hide" style="font-size:32rpx">
+        <view class="cell">
+            <span class="warp-hide font16">
                 已选(默认)：{{selectArr}}
             </span>
             <image bindtap="showPop" src="../../img/more.svg" mode="widthFix" style="width:46rpx;position:absolute;right:0;top:0;"/>
@@ -46,7 +58,7 @@
         <view style="padding:6rpx 0;"></view>
         <text class="pop-title">已选：{{selectArr}}</text>
     </view>
-    <view style="padding:20rpx 0;">
+    <view class="line-container">
         <view class="line"></view>
     </view>
     <block wx:for="{{spec_array}}" wx:key="{{index}}">
@@ -58,7 +70,7 @@
                 </view>
             </view>       
         </view>
-        <view style="padding:20rpx 0;">
+        <view class="line-container">
             <view class="line"></view>
         </view>
     </block>
@@ -70,7 +82,7 @@
             <button class="btn btn-pop add" type="default" data-type="add" size="mini" plain disabled="{{false}}" bindtap="reduceOrincrease">+</button>
         </view>
     </view>
-     <view style="padding:20rpx 0;">
+     <view class="line-container">
         <view class="line"></view>
     </view>
     <view class="btn-group">
