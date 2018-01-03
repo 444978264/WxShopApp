@@ -3,7 +3,7 @@ import extend from '../../libs/extends.js';
 import _ from '../../libs/deepcopy';
 const app = getApp();
 extend({
-    $openRefresh(){
+    $openRefresh() {
         return true
     },
     data: {
@@ -11,9 +11,9 @@ extend({
         result: null,
         city: '--'
     },
-    loading:false,
+    loading: false,
     fetch() {
-        if(this.loading)return
+        if (this.loading) return
         this.loading = true;
         return this.$http.iad({
             code: 'index',
@@ -49,26 +49,40 @@ extend({
                             this.setData({ result })
                         })
                     }
+                } else if (res.xcx_module == 'swiper') {
+                    res.swiperHeight = 0
                 }
             })
             this.setData({ result })
         })
     },
-    setVal({detail}){
+    // swiper自适应高度
+    imgLoad({ detail, ...other }) {
+        let { id } = this.dataset(other);
+        let { result } = this.data;
+        let h = detail.height;
+        if (result[id].swiperHeight <= 0) {
+            result[id].swiperHeight = h;
+        } else {
+            result[id].swiperHeight = result[id].swiperHeight > h ? result[id].swiperHeight : h;
+        }
+        this.setData({result})
+    },
+    setVal({ detail }) {
         this.inp_val = JSON.stringify([{
-            field:'name',
-            oper:'like',
-            keyword:detail.value
+            field: 'name',
+            oper: 'like',
+            keyword: detail.value
         }]);
     },
-    searchResult({type,...other}){
-        switch(type){
+    searchResult({ type, ...other }) {
+        switch (type) {
             case "confirm":
                 this.setVal(other);
-            break;
+                break;
         }
-        this.$router.push('products',{
-            keyword:this.inp_val
+        this.$router.push('products', {
+            keyword: this.inp_val
         })
     },
     onLoad() {

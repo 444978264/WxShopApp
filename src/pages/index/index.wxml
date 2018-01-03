@@ -16,5 +16,5 @@
     </view>
 </view>
 <view wx:for="{{result}}" wx:key="{{index}}">
-    <template wx:if="{{item.xcx_module!='default'}}" is="{{item.xcx_module}}" data="{{...item}}"></template>
+    <template wx:if="{{item.xcx_module!='default'}}" is="{{item.xcx_module}}" data="{{...item,index}}"></template>
 </view>

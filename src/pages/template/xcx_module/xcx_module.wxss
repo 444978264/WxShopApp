@@ -1,3 +1,6 @@
+.xcx-module{
+    margin-bottom:20rpx;
+}
 .xcx-module-link{
     height:auto;
 }
