@@ -1,9 +1,10 @@
+<wxs src="../../comm.wxs" module="comm" />
 <template name="swiper">
     <view class="temp_swiper">
         <swiper class="swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{2000}}" circular>
         <block wx:for="{{photo}}" wx:key="{{index}}">
             <swiper-item class="swiper-item">
-                <image style="width:100%" mode="widthFix" src="http://www.lastmall.com/{{item.img}}" class="slide-image"/>
+                <image style="width:100%" mode="widthFix" src="{{comm.imgUrl(item.img)}}" class="slide-image"/>
             </swiper-item>
         </block>
         </swiper>

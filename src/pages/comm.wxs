@@ -1,20 +1,32 @@
-var nav = [
-    {
-        title: "首页",
-        icon: '../../img/cup.svg'
-    },
-    {
-        title: "活动",
-        icon: '../../img/cup.svg'
-    },
-    {
-        title: "购物袋",
-        icon: '../../img/cup.svg'
-    },
-    {
-        title: "我的",
-        icon: '../../img/cup.svg'
-    }
-]
+var host = "http://www.lastmall.com"
 
-module.exports.nav = nav
+function imgUrl(url) {
+    var reg = getRegExp("^(https|http|ftp|rtsp|mms)")
+    if (reg.test(url)) {
+        return url
+    } else if (url[0] == '/') {
+        return host + url
+    } else {
+        return host + '/' + url
+    }
+}
+function linkTo(url) {
+    var path = '';
+    var reg = getRegExp("[&|\?]((?!controller|action).)*=([^&?]*)", 'm');  
+    path = url.match(reg).join('');
+    if (path[0] == "&") {
+        path[0] = "?"
+    }
+    return path
+}
+
+function parse(data){
+    return typeof data == "string" ?JSON.parse(data):data
+}
+function parseNum(data){
+    return +data
+}
+
+module.exports.parse = parse
+module.exports.imgUrl = imgUrl
+module.exports.link = linkTo

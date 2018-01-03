@@ -7,6 +7,7 @@
 @import '/pages/template/article/article.wxss';
 @import '/pages/template/goods/goods.wxss';
 @import '/pages/template/modal/modal.wxss';
+@import '/pages/template/xcx_module/xcx_module.wxss';
 
 page{
     background:#f0f2f4;

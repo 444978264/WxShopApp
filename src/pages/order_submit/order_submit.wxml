@@ -13,9 +13,10 @@
     module.exports.parse = parse
     module.exports.parseNum = parseNum
 </wxs>
+<wxs src="../comm.wxs" module="comm" />
 <view class="container">    
     <view wx:if="{{goodsList.length}}" wx:for="{{goodsList}}" wx:key="{{index}}" class="flex flex-row">
-        <image style="width:180rpx;height:180rpx;margin-right:20rpx;" mode="scaleToFill" src="http://www.lastmall.com/{{item.img}}" />
+        <image style="width:180rpx;height:180rpx;margin-right:20rpx;" mode="scaleToFill" src="{{comm.imgUrl(item.img)}}" />
         <view class="flex flex-column flex-between font14">
             <text>{{item.name}}</text>
             <view>

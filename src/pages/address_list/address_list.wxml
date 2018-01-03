@@ -3,7 +3,7 @@
     <text>地址管理</text>
 </view>
 <block wx:if="{{list.length}}">   
-    <view bindtap="edit" data-id="{{item.id}}" wx:for="{{list}}" wx:key="{{index}}" class="container flex flex-row flex-between flex-align font14">
+    <view bindtap="edit" bindlongpress="del" data-id="{{item.id}}" wx:for="{{list}}" wx:key="{{index}}" class="container flex flex-row flex-between flex-align font14">
         <view class="flex ">
             <text>{{item.accept_name}}({{item.mobile}})</text>
             <text>{{item.province_name}}{{item.city_name}}{{item.area_name}}{{item.address}}</text>

@@ -162,6 +162,8 @@ const host = dev ? config.local : config.host;
   export const addressUpdate = (params,config)=>ajax(getUrl("iaddress","update"), params, config)
   // 地址添加
   export const addressAdd = (params,config)=>ajax(getUrl("iaddress","add"), params, config)
+  // 地址删除
+  export const addressDel = (params,config)=>ajax(getUrl("iaddress","del"), params, config)
   // 代金券列表
   export const tickets = (params,config)=>ajax(getUrl("icashcoupon","lst"), params, config)
   // 微页面
@@ -194,9 +196,15 @@ const host = dev ? config.local : config.host;
   export const confirmOrder = (params,config)=>ajax(getUrl("iorder","confirm"), params, config)
   // 取消订单
   export const cancelOrder = (params,config)=>ajax(getUrl("iorder","cancel"), params, config)
+  // 通过id
+  export const getById = (params,config)=>ajax(getUrl("igoods","get_by_ids"), params, config)
+  // 通过分类
+  export const getByCategory = (params,config)=>ajax(getUrl("igoods","get_by_category"), params, config)
 /* export default */
   export default {
     TOKEN,
+    getById,
+    getByCategory,
     setToken,
     uploadUrl,
     uploadImg,
@@ -227,5 +235,6 @@ const host = dev ? config.local : config.host;
     confirmOrder,
     cancelOrder,
     addressUpdate,
-    addressAdd
+    addressAdd,
+    addressDel
   }

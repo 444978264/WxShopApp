@@ -1,0 +1,7 @@
+<template name="image-float">
+    <view class="image-float clearfix">
+        <navigator class="xcx-module-link" class="left" style="width:{{item.width}}%" url="{{item.link}}" navigate hover-class="hover-class" wx:for="{{img}}" wx:key="{{index}}">
+            <image class="image-float-item" mode="widthFix" src="{{item.url}}" />
+        </navigator>
+    </view>
+</template>    

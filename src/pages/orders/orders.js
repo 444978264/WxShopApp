@@ -126,10 +126,11 @@ let init = _.extend(true, {
         })
     },
     onLoad({ pay, dist, type }) {
-        // let { pay, dist } = options;
-        this.order_status = {
-            pay,
-            dist
+        if(pay>=0&&dist>=0){
+            this.order_status = {
+                pay,
+                dist
+            }
         }
         let idx = this.data.navs.indexOf(type);
         let active = idx > -1 ? idx : 0;

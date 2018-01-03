@@ -1,0 +1,14 @@
+<wxs src="../../comm.wxs" module="comm" />
+<template name="goods-row">
+    <view class="goods-module flex flex-row flex-wrap">
+        <view  wx:for="{{_xcxSource}}" wx:key="{{index}}" class="module-goods-item {{'waterfall-id'+ id }}">
+            <view style="background:#fff;">
+            <image class="goods-img" mode="widthFix" lazy-load="{{true}}" src="{{comm.imgUrl(item.img)}}" />
+            <view class="goods-info">
+                <text class="goods-title">{{item.name}}</text>
+                <text class="goods-price">￥{{item.group_price}}<text class="goods-sale">{{item.sale}}人付款</text></text>      
+            </view>
+            </view>
+        </view>
+    </view>
+</template>       

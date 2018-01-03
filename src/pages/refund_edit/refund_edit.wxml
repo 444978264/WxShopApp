@@ -1,16 +1,7 @@
 <view class="container text-center flex flex-center">
     <text style="font-size:30rpx;">退款申请</text>
 </view>
-<wxs module="tools">
-    function parse(data){
-        return typeof data == "string" ?JSON.parse(data):data
-    }
-    function parseNum(data){
-        return +data
-    }
-    module.exports.parse = parse
-    module.exports.parseNum = parseNum
-</wxs>
+<wxs src="../comm.wxs" module="comm" />
 <view class="container">
     <text class="font14">订单号：{{order_no}}</text>
     <view class="line-container">
@@ -20,11 +11,11 @@
         <checkbox-group bindchange="checkboxChange"> 
             <label class="checkbox" wx:if="{{items.length}}" wx:for="{{items}}" wx:key="{{index}}">
                 <view class="flex flex-row" style="padding-right:60rpx;position:relative">      
-                    <image style="width:180rpx;height:180rpx;margin-right:20rpx;" mode="scaleToFill" src="http://www.lastmall.com/{{item.img  }}" />
+                    <image style="width:180rpx;height:180rpx;margin-right:20rpx;" mode="scaleToFill" src="{{comm.imgUrl(item.img)}}" />
                     <view class="flex flex-column flex-between font14">
                         <text>{{item.name_value}}</text>
                         <view>
-                            <text wx:for="{{tools.parse(item.spec_array)}}" wx:key="idx" wx:for-index="idx" wx:for-item="val">{{val.name}}:{{val.value}}</text>
+                            <text wx:for="{{comm.parse(item.spec_array)}}" wx:key="idx" wx:for-index="idx" wx:for-item="val">{{val.name}}:{{val.value}}</text>
                         </view>
                         <text>{{item.real_price}}x{{item.goods_nums}}</text>
                     </view>

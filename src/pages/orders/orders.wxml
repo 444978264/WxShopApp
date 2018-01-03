@@ -37,6 +37,7 @@
     }
     module.exports.type = order_type;
 </wxs>
+<wxs src="../comm.wxs" module="comm" />
 <view wx:if="{{list.length}}">
     <view wx:for="{{list}}" wx:key="{{index}}" class="cell-group flex font14 fc-theme">
         <view class="flex-item cell-item flex flex-row flex-between weight600">
@@ -45,7 +46,7 @@
         </view>
         <view class="line"></view>
         <view wx:for="{{item._goods}}" wx:for-item="val" wx:for-index="idx" wx:key="{{idx}}" class="flex-item cell-item flex flex-row flex-left flex-top">
-            <image class="w90 margin-right10" mode="widthFix"  src="http://www.lastmall.com/{{val.img}}" />
+            <image class="w90 margin-right10" mode="widthFix"  src="{{comm.imgUrl(val.img)}}" />
             <view class="flex-item">
                 <text class="warp-hide">{{val.name_s}}</text>
                 <text></text>

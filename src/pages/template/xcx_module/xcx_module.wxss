@@ -1,0 +1,15 @@
+.xcx-module-link{
+    height:auto;
+}
+.image-float-item{
+    width:100%;
+    display:block;
+}
+.goods-module{
+    padding:0 10rpx;
+}
+.module-goods-item{
+    width:50%;
+    padding:10rpx;
+    box-sizing:border-box;
+}

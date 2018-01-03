@@ -1,3 +1,0 @@
-<view wx:for="{{nav.nav}}" wx:key="{{index}}">
-    {{item.title}}
-</view>

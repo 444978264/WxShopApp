@@ -13,14 +13,14 @@ App({
     $Location.info((res) => {
       let { result } = res.originalData;
       this.globalData.location = result;
-      success && success();
-      always && always();
+      success && success(res);
+      always && always(res);
       console.log(res, '百度地址')
     }, (err) => {
       alert('定位失败', "warn")
       console.log(err)
-      fail && fail();
-      always && always();
+      fail && fail(err);
+      always && always(err);
     })
   },
   login(fn) {
