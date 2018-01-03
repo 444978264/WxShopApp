@@ -34,6 +34,7 @@ extend({
     },
     //计算多规格选择的数据信息
     computedResult: function () {
+        if(!this.data.spec_array.length)return;
         let { goodsType } = this._computed;
         let { selectArr, store_num, price, sub_id, count } = this.data;
         selectArr.forEach(function (res) {
@@ -95,6 +96,7 @@ extend({
             // 计算
             this._computed.goodsType = other.skus && other.skus;
             // 如果不是多规格的商品，设置库存数
+            console.log(other.skus && !other.skus.length)
             store_num = other.skus && !other.skus.length ? other.store_nums : 0;
             let goods_type = other.skus && other.skus.length ? 'product' : 'goods';
             let result = other;
@@ -158,8 +160,8 @@ extend({
         }
     },
     toBuy() {
-        let { count, sub_id, goods_type } = this.data;
-        if (count <= 0) {
+        let { count, sub_id, goods_type,store_num } = this.data;
+        if (store_num <= 0) {
             this.$message("库存不足", {
                 success: void (0)
             })

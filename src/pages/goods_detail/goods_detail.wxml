@@ -27,7 +27,7 @@
             </button>   
         </view>
     </view>
-    <view class="container content-body">
+    <view wx:if="{{spec_array.length}}" class="container content-body">
         <view style="padding-right:80rpx;position:relative">
             <span class="warp-hide" style="font-size:32rpx">
                 已选(默认)：{{selectArr}}

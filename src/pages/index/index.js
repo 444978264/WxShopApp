@@ -3,16 +3,23 @@ import extend from '../../libs/extends.js';
 import _ from '../../libs/deepcopy';
 const app = getApp();
 extend({
+    $openRefresh(){
+        return true
+    },
     data: {
         idx: 0,
         result: null,
         city: '--'
     },
+    loading:false,
     fetch() {
-        this.$http.iad({
+        if(this.loading)return
+        this.loading = true;
+        return this.$http.iad({
             code: 'index',
             fld: 'content_json'
         }).then(res => {
+            this.loading = false;
             if (!res) return
             let result = JSON.parse(res.content);
             result.forEach((res, i) => {
