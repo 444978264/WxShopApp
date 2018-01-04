@@ -34,7 +34,7 @@ extend({
     },
     //计算多规格选择的数据信息
     computedResult: function () {
-        if(!this.data.spec_array.length)return;
+        if (!this.data.spec_array.length) return;
         let { goodsType } = this._computed;
         let { selectArr, store_num, price, sub_id, count } = this.data;
         selectArr.forEach(function (res) {
@@ -96,22 +96,24 @@ extend({
             // 计算
             this._computed.goodsType = other.skus && other.skus;
             // 如果不是多规格的商品，设置库存数
-            console.log(other.skus && !other.skus.length)
             store_num = other.skus && !other.skus.length ? other.store_nums : 0;
             let goods_type = other.skus && other.skus.length ? 'product' : 'goods';
             let result = other;
-            spec_array = Object.values(res.spec_array && JSON.parse(res.spec_array)).map(res => ({
-                name: res.name,
-                value: res.value.split(",")
-            }))
-            for (var i = 0; i < spec_array.length; i++) {
-                selectArr[i] = spec_array[i].value[0];
+
+            if (spec_array.trim() != "") {
+                spec_array = Object.values(spec_array && JSON.parse(spec_array)).map(res => ({
+                    name: res.name,
+                    value: res.value.split(",")
+                }))
+                for (var i = 0; i < spec_array.length; i++) {
+                    selectArr[i] = spec_array[i].value[0];
+                }
             }
+            
             this.setData({ result, photo, goods_type, spec_array, store_num, selectArr }, () => {
+                console.log(this.data, 'data')
                 this.computedResult()
             });
-
-            // console.log(this._computed.goodsType);
         })
     },
     setCount(e) {
@@ -160,7 +162,7 @@ extend({
         }
     },
     toBuy() {
-        let { count, sub_id, goods_type,store_num } = this.data;
+        let { count, sub_id, goods_type, store_num } = this.data;
         if (store_num <= 0) {
             this.$message("库存不足", {
                 success: void (0)
@@ -194,7 +196,7 @@ extend({
             show_pop: false
         })
     },
-    showPop(){
+    showPop() {
         this.setData({
             show_pop: true
         })

@@ -33,33 +33,69 @@
             flex-grow: 1;
 }
 .flex-left{
-    justify-content:flex-start;
-    align-items:center;
+    -webkit-box-pack:start;
+    -webkit-justify-content:flex-start;
+        -ms-flex-pack:start;
+            justify-content:flex-start;
+    -webkit-box-align:center;
+    -webkit-align-items:center;
+        -ms-flex-align:center;
+            align-items:center;
 }
 .flex-right{
-    justify-content:flex-end;
-    align-items:center;
+    -webkit-box-pack:end;
+    -webkit-justify-content:flex-end;
+        -ms-flex-pack:end;
+            justify-content:flex-end;
+    -webkit-box-align:center;
+    -webkit-align-items:center;
+        -ms-flex-align:center;
+            align-items:center;
 }
 .flex-between{
-    justify-content:space-between;
+    -webkit-box-pack:justify;
+    -webkit-justify-content:space-between;
+        -ms-flex-pack:justify;
+            justify-content:space-between;
 }
 .flex-align{
-    align-items:center
+    -webkit-box-align:center;
+    -webkit-align-items:center;
+        -ms-flex-align:center;
+            align-items:center
 }
 .flex-top{
-    align-items:flex-start
+    -webkit-box-align:start;
+    -webkit-align-items:flex-start;
+        -ms-flex-align:start;
+            align-items:flex-start
 }
 .flex-around{
-    justify-content:space-around;
-    align-items:center;
+    -webkit-justify-content:space-around;
+        -ms-flex-pack:distribute;
+            justify-content:space-around;
+    -webkit-box-align:center;
+    -webkit-align-items:center;
+        -ms-flex-align:center;
+            align-items:center;
 }
 .flex-row{
-    flex-direction:row;
+    -webkit-box-orient:horizontal;
+    -webkit-box-direction:normal;
+    -webkit-flex-direction:row;
+        -ms-flex-direction:row;
+            flex-direction:row;
 }
 .flex-column{
-    flex-direction:column;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+    -webkit-flex-direction:column;
+        -ms-flex-direction:column;
+            flex-direction:column;
 }
 
 .flex-wrap{
-    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
 }

@@ -38,7 +38,6 @@ let config = _.extend(true, {
             if (!res) return
             let { goodsList, promotionPlug, delivery_list, final_sum, ...other } = res;
             this.setData({ goodsList, promotionPlug, delivery_list, final_sum, result: other })
-            console.log(res)
         })
     },
     onShow() {

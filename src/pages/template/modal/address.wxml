@@ -10,13 +10,13 @@
                     </view>
                     <view>{{item.province_name+item.city_name+item.area_name+item.address}}</view>
                 </view>
-                <image style="width:60rpx;" mode="widthFix" src="../../img/edit.svg" />
+                <image data-id="{{item.id}}" style="width:60rpx;" mode="widthFix" src="../../img/edit.svg" catchtap="_edit"/>
             </view>
             <view style="padding:20rpx 0;">
                 <view class="line"></view>
             </view>
         </block>
-        <view class="modal-item flex flex-row flex-center">
+        <view class="modal-item flex flex-row flex-center" bindtap="_add" >
             <image style="width:70rpx;" mode="widthFix" src="../../img/add.svg" />
             <text class="font16">添加新地址</text>
         </view>

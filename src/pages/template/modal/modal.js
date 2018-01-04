@@ -1,3 +1,4 @@
+import address from './address'
 export default {
     data: {
         addressList: [],
@@ -11,6 +12,27 @@ export default {
         temp_type: ''
     },
     _order_id: null,
+    ...address,
+    _add() {
+        this.setData({
+            show_modal: false
+        })
+        this.add()
+    },
+    _edit(e) {
+        this.setData({
+            show_modal: false
+        })
+        this.edit(e)
+    },
+    _getAddress() {
+        return this.$http.addressLst().then(addressList => {
+            if (!addressList) return
+            this.setData({
+                addressList
+            })
+        })
+    },
     _modalHide() {
         this.setData({
             show_modal: false
@@ -26,8 +48,8 @@ export default {
     },
     _selectSource(e) {
         let { type, oid } = this.dataset(e);
-        if(oid){
-            console.log(this.dataset(e),oid,45654654)
+        if (oid) {
+            console.log(this.dataset(e), oid, 45654654)
             this._order_id = oid;
         }
         switch (type) {
@@ -54,14 +76,6 @@ export default {
                 break
         }
     },
-    _getAddress() {
-        this.$http.addressLst().then(addressList => {
-            if (!addressList) return
-            this.setData({
-                addressList
-            })
-        })
-    },
     _selectRes(e) {
         let { type, idx } = this.dataset(e);
         switch (type) {
@@ -80,7 +94,6 @@ export default {
             case 'payment':
                 this.setData({
                     paymentIdx: idx,
-                    // show_modal:false                    
                 }, () => {
                     this._createdOrd();
                 })
@@ -88,7 +101,6 @@ export default {
         }
     },
     _createdOrd() {
-        console.log('order')
         if (this._order_id == null) {
             let {
                 addressList,
@@ -99,6 +111,18 @@ export default {
                 paymentIdx,
                 goodsList
             } = this.data
+            if (!addressList.length) {
+                this.$message('请选择地址', {
+                    success: void (0)
+                })
+                return
+            }
+            if (!delivery_list.length) {
+                this.$message('请选择配送方式', {
+                    success: void (0)
+                })
+                return
+            }
             this.$http.toPay({
                 data_json: JSON.stringify({
                     // ticket_id: ticketIdx >= 0 && ticketLst[ticketIdx].id || '',

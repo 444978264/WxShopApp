@@ -6,7 +6,7 @@
 <wxs src="../comm.wxs" module="comm" />
 
 <view class="input-group flex flex-row font14">
-    <view class="flex flex-row flex-center local">
+    <view wx:if="{{false}}" class="flex flex-row flex-center local">
         <image style="width:30rpx;" src="../../img/local.svg" mode="widthFix" />
         <text>{{city}}</text>
     </view>

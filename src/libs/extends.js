@@ -3,7 +3,7 @@ import $http, { TOKEN, getImg } from './api';
 import _ from './deepcopy';
 import shareConfig from '../config/share.config';
 import config_audio, { recorderManager, innerAudioContext, needImport } from "./config_audio";
-
+import './polyfill'
 var config = {
     // 通用方法
     ...options,

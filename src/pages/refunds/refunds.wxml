@@ -8,7 +8,7 @@
             <text>退款订单 : <text class="c-grey">{{item.refund_no}}</text></text>
             <text>订单状态 : <text class="c-grey">{{item.status_name}}</text></text>
         </view>
-        <button wx:if="{{item.pay_status==0}}" class="absolute btn btn-plain" style="right:20rpx;" type="default" data-id="{{item.id}}" data-idx="{{index}}" data-no="{{item.refund_no}}" size="mini" plain bindtap="cancelRefund" hover-class="hover-class">取消</button>
+        <button wx:if="{{item.pay_status==0}}" class="absolute btn btn-plain" style="right:20rpx;" type="default" data-id="{{item.id}}" data-idx="{{index}}" data-no="{{item.refund_no}}" size="mini" plain catchtap="cancelRefund" hover-class="hover-class">取消</button>
     </view>
 </view>
 <template wx:else is="empty"></template>

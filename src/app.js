@@ -9,18 +9,14 @@ App({
     this.globalData.page = query;
   },
   // 获取 定位
-  getLocation({ success, fail, always }) {
+  getLocation({ success, fail}) {
     $Location.info((res) => {
       let { result } = res.originalData;
       this.globalData.location = result;
       success && success(res);
-      always && always(res);
-      console.log(res, '百度地址')
     }, (err) => {
-      alert('定位失败', "warn")
       console.log(err)
       fail && fail(err);
-      always && always(err);
     })
   },
   login(fn) {

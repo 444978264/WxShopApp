@@ -50,7 +50,10 @@ extend({
                         })
                     }
                 } else if (res.xcx_module == 'swiper') {
-                    res.swiperHeight = 0
+                    console.log()
+                    let h = this.getItemSync('swiper_height');
+                    console.log(h,456465)
+                    res.swiperHeight =h||0;
                 }
             })
             this.setData({ result })
@@ -58,6 +61,7 @@ extend({
     },
     // swiper自适应高度
     imgLoad({ detail, ...other }) {
+        console.log('图片加载成功')
         let { id } = this.dataset(other);
         let { result } = this.data;
         let h = detail.height;
@@ -66,7 +70,8 @@ extend({
         } else {
             result[id].swiperHeight = result[id].swiperHeight > h ? result[id].swiperHeight : h;
         }
-        this.setData({result})
+        this.setData({ result })
+        this.setItem('swiper_height', result[id].swiperHeight)
     },
     setVal({ detail }) {
         this.inp_val = JSON.stringify([{
@@ -86,9 +91,7 @@ extend({
         })
     },
     onLoad() {
-        this.fetch()
-    },
-    onShow() {
+        this.fetch();
         app.getLocation({
             always: ({ originalData }) => {
                 console.log(originalData)
