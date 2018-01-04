@@ -7,11 +7,9 @@
     }
     module.exports.view = view
 </wxs> 
-<scroll-view class="flex flex-row header view flex-center" style="width:100%" scroll-x scroll-into-view="{{tools.view(viewid)}}">
-    <view class="cell-group flex flex-row">
-        <view bindtap="selectNavs" id="view{{item.id}}" class="cell-item navs font14 {{viewid===item.id?'cell-active':''}}" data-viewid="{{item.id}}" wx:for="{{navs}}" wx:key="{{index}}">
-            <text>{{item.name}}</text>
-        </view>
+<scroll-view class="header view nowarp" scroll-x scroll-into-view="{{tools.view(viewid)}}">
+    <view bindtap="selectNavs" id="view{{item.id}}" style="display:inline-block" class="cell-item navs font14 {{viewid===item.id?'cell-active':''}}" data-viewid="{{item.id}}" wx:for="{{navs}}" wx:key="{{index}}">
+        <text>{{item.name}}</text>
     </view>
 </scroll-view>
 
