@@ -47,6 +47,10 @@
             <image bindtap="showPop" src="../../img/more.svg" mode="widthFix" style="width:46rpx;position:absolute;right:0;top:0;"/>
         </view>
     </view>
+    <!-- 详情 -->
+    <view wx:if="{{result.content}}" class="container content-body">
+        <rich-text nodes="{{result.content}}"></rich-text>
+    </view>
 </view>
 
 <view hidden="{{!show_pop}}" class="modal-layer" bindtap="closePop"></view>
@@ -89,17 +93,20 @@
         <view class="btn btn-danger" bindtap="toBuy">
             <text>立即购买</text>
         </view> 
-        <view class="btn btn-primary" bindtap="joinCart">
+       <!-- <view class="btn btn-primary" bindtap="joinCart">
             <text>加入购物车</text>
-        </view>    
+        </view> -->   
     </view>  
 </view>
 
 <view class="footer btn-group">
+    <!--<view class="btn btn-primary" bindtap="resultCtrl" data-type="cart">
+        <text>加入购物车</text>
+    </view> -->  
+    <view class="btn btn-primary">
+        <contact-button size="30" type="default-light"></contact-button>
+    </view>  
     <view class="btn btn-danger" bindtap="resultCtrl" data-type="bug">
         <text>立即购买</text>
     </view> 
-    <view class="btn btn-primary" bindtap="resultCtrl" data-type="cart">
-        <text>加入购物车</text>
-    </view>    
 </view>    

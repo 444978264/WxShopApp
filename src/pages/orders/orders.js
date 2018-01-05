@@ -10,7 +10,7 @@ let init = _.extend(true, {
     data: {
         list: [],
         navs: ['全部', '待付款', '待发货', '待收货', '已完成'],
-        active: 0
+        active: 0,
     },
     page: 1,
     pagesize: 20,
@@ -55,7 +55,8 @@ let init = _.extend(true, {
             })
             list = list.concat(res.rows);
             this.setData({
-                list
+                list,
+                has_next:res.has_next
             })
             console.log(res)
         })

@@ -1,4 +1,5 @@
 <import src="../template/emptylist/emptylist.wxml" />
+<import src="../template/emptylist/no_more.wxml" />
 <import src="../template/modal/modal.wxml" />
 
 <view class="header cell-group flex flex-row font14 fc-theme">
@@ -72,6 +73,7 @@
             </view>
         </view>
     </view>
+    <template is="nomore" data="{{has_next}}"></template>
 </view>
 <template wx:else is="empty"></template>
 <template is="modal" data="{{show_modal,temp_type,dataSource,paymentIdx}}"></template>

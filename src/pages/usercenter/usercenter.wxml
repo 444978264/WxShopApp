@@ -17,7 +17,7 @@
                 <text class="font12 padding5">购物袋</text>
             </view>-->
              <view class="flex-item flex flex-center">
-                <text class="font16 weight">{{count}}</text>
+                <text class="font16 weight">0</text>
                 <text class="font12 padding5">代金券</text>
             </view>
             <!-- 

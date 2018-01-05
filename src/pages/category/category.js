@@ -27,7 +27,6 @@ let config = _.extend(true, {
         this.setData({ list })
     },
     fetch() {
-        console.log(this.imgIsLoad,this.loading,this.has_next)
         if (!this.has_next) return
         if (this.loading) return
         if (this.imgIsLoad) return

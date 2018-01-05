@@ -50,9 +50,7 @@ extend({
                         })
                     }
                 } else if (res.xcx_module == 'swiper') {
-                    console.log()
                     let h = this.getItemSync('swiper_height');
-                    console.log(h,456465)
                     res.swiperHeight =h||0;
                 }
             })
@@ -92,12 +90,12 @@ extend({
     },
     onLoad() {
         this.fetch();
-        app.getLocation({
-            always: ({ originalData }) => {
-                console.log(originalData)
-                let city = originalData.result.addressComponent.city;
-                this.setData({ city })
-            }
-        });
+        // app.getLocation({
+        //     always: ({ originalData }) => {
+        //         console.log(originalData)
+        //         let city = originalData.result.addressComponent.city;
+        //         this.setData({ city })
+        //     }
+        // });
     }
 });

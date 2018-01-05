@@ -13,6 +13,21 @@ page{
     background:#f0f2f4;
 }
 
+.loading{
+    transition:all .5s ease;
+    animation: loading .8s ease-out infinite ;
+}
+
+@keyframes loading{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
 .label{
     display: inline-block;
     padding:2rpx 10rpx;

@@ -5,6 +5,9 @@ import shareConfig from '../config/share.config';
 import config_audio, { recorderManager, innerAudioContext, needImport } from "./config_audio";
 import './polyfill'
 var config = {
+    data:{
+        has_next:true
+    },
     // 通用方法
     ...options,
 
@@ -60,8 +63,8 @@ var config = {
 
     // 用户点击右上角分享
     $shareParams: {
-        title: '读口令拿红包',
-        desc: '最具人气的口令红包小程序!',
+        title: '云锐商城',
+        desc: '云锐商城，想你所想!',
         params: null,
         imageUrl: getImg('share_now.png'),
         path: '/pages/index/index',

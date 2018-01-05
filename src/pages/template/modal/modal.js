@@ -101,16 +101,19 @@ export default {
         }
     },
     _createdOrd() {
+        let {
+            addressList,
+            addressIdx,
+            delivery_list,
+            deliveryIdx,
+            paymentList,
+            paymentIdx,
+            goodsList
+        } = this.data;
+        
+        let payment = paymentList[paymentIdx].id;
+
         if (this._order_id == null) {
-            let {
-                addressList,
-                addressIdx,
-                delivery_list,
-                deliveryIdx,
-                paymentList,
-                paymentIdx,
-                goodsList
-            } = this.data
             if (!addressList.length) {
                 this.$message('请选择地址', {
                     success: void (0)
@@ -140,7 +143,7 @@ export default {
                         };
                     }),
                     mobile: addressList[addressIdx].mobile,
-                    payment: paymentList[paymentIdx].id,
+                    payment: payment,
                     province: addressList[addressIdx].province,
                     telphone: addressList[addressIdx].telphone,
                     zip: addressList[addressIdx].zip
@@ -152,7 +155,13 @@ export default {
                 this._payHandle();
             })
         } else {
-            this._payHandle();
+            this.$http.payUpdate({
+                id: this._order_id,
+                payment: payment
+            }).then(res => {
+                if (!res) return
+                this._payHandle();
+            })
         }
     },
     _payHandle() {

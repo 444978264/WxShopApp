@@ -38,6 +38,7 @@ const host = dev ? config.local : config.host;
         },
         data: {
           token: TOKEN,
+          sxs_id:'xcx01',
           ...params
         },
         success: res => {
@@ -180,11 +181,13 @@ const host = dev ? config.local : config.host;
   export const pay = (params,config)=>ajax(getUrl("iorder","pay"), params, config)
   // 支付状态检查
   export const payCbk = (params,config)=>ajax(getUrl("iorder","pay_callback"), params, config)
+  //改变支付方式
+  export const payUpdate = (params,config)=>ajax(getUrl("iorder","update_payment"), params, config)
   // 退款申请列表
   export const refundLst = (params,config)=>ajax(getUrl("irefund","lst"), params, config)
   // 取消退款申请
   export const cancelRef = (params,config)=>ajax(getUrl("irefund","cancel_by_user"), params, config)
-  // 取消退款申请
+  // 退货地址
   export const refundAddress = (params,config)=>ajax(getUrl("iexpress","address_lst"), params, config)
   // 购物车数量
   export const countOfCart = (params,config)=>ajax(getUrl("icart","count"), params, config)
@@ -200,6 +203,9 @@ const host = dev ? config.local : config.host;
   export const getById = (params,config)=>ajax(getUrl("igoods","get_by_ids"), params, config)
   // 通过分类
   export const getByCategory = (params,config)=>ajax(getUrl("igoods","get_by_category"), params, config)
+  // 代金券
+  export const chits = (params,config)=>ajax(getUrl("icashcoupon","lst"), params, config)
+
 /* export default */
   export default {
     TOKEN,
@@ -236,5 +242,7 @@ const host = dev ? config.local : config.host;
     cancelOrder,
     addressUpdate,
     addressAdd,
-    addressDel
+    addressDel,
+    payUpdate,
+    chits
   }

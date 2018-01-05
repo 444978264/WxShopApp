@@ -1,0 +1,21 @@
+<import src="../template/emptylist/emptylist.wxml" />
+<import src="../template/emptylist/no_more.wxml" />
+
+<view class="container text-center font14">
+    <text>代金券</text>
+</view>
+
+<block wx:if="{{list.length}}">
+    <view class="flex flex-row font14" wx:for="{{list}}" wx:key="{{index}}">
+        <view style="border-radius:10rpx;background:#fb5353;">
+            <text>{{item.value}}</text>
+        </view>
+        <view class="flex">
+            <text>{{item.name}}</text>
+            <text>{{item.card_name}}</text>
+            <text>有效期至{{item.end_time}}</text>
+        </view>
+    </view>
+    <template is="nomore" data="{{has_next}}"></template>    
+</block>
+<template wx:else is="empty"></template>   

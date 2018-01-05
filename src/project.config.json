@@ -97,6 +97,13 @@
 					"name": "地址",
 					"pathName": "pages/address_list/address_list",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "代金券",
+					"pathName": "pages/chits/chits",
+					"query": "",
+					"scene": "1008"
 				}
 			]
 		}

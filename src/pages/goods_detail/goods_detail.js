@@ -19,12 +19,13 @@ extend({
         count: 1,
         store_num: 0,
         price: 0,
-        sub_id: "",
         selectArr: [],
         show_pop: false
     },
     id: null,
     loading: false,
+    // 选择的商品id
+    sub_id: "",    
     onLoad: function (options) {
         let { id } = options
         this.$shareParams.params.id = id;
@@ -36,7 +37,7 @@ extend({
     computedResult: function () {
         if (!this.data.spec_array.length) return;
         let { goodsType } = this._computed;
-        let { selectArr, store_num, price, sub_id, count } = this.data;
+        let { selectArr, store_num, price,  count } = this.data;
         selectArr.forEach(function (res) {
             goodsType = goodsType.filter(function (elem) {
                 return elem.spec_array.indexOf(res) > -1;
@@ -62,8 +63,8 @@ extend({
             count = 1;
         }
         price = goodsType[0].price;
-        sub_id = goodsType[0].id;
-        this.setData({ price, sub_id, store_num, count })
+        this.sub_id = goodsType[0].id;
+        this.setData({ price,  store_num, count })
     },
     checkHandle(e) {
         let { val, idx } = this.dataset(e);
@@ -108,10 +109,11 @@ extend({
                 for (var i = 0; i < spec_array.length; i++) {
                     selectArr[i] = spec_array[i].value[0];
                 }
+            }else{
+                this.sub_id = this.id;
             }
             
             this.setData({ result, photo, goods_type, spec_array, store_num, selectArr }, () => {
-                console.log(this.data, 'data')
                 this.computedResult()
             });
         })
@@ -162,7 +164,7 @@ extend({
         }
     },
     toBuy() {
-        let { count, sub_id, goods_type, store_num } = this.data;
+        let { count,  goods_type, store_num } = this.data;
         if (store_num <= 0) {
             this.$message("库存不足", {
                 success: void (0)
@@ -171,17 +173,17 @@ extend({
         }
         let params = {
             type: goods_type,
-            id: sub_id,
+            id: this.sub_id,
             num: count
         }
         this.$router.push('order_submit', { ...params });
     },
     joinCart() {
         if (this.loading) return
-        let { count, sub_id, goods_type } = this.data;
+        let { count,  goods_type } = this.data;
         let config = {
             type: goods_type,
-            id: sub_id,
+            id: this.sub_id,
             num: count
         }
         this.loading = true;

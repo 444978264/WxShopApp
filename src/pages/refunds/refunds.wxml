@@ -1,4 +1,5 @@
 <import src="../template/emptylist/emptylist.wxml" />
+<import src="../template/emptylist/no_more.wxml" />
 <view class="container text-center font14">
     <text>退款&售后</text>
 </view>
@@ -10,5 +11,6 @@
         </view>
         <button wx:if="{{item.pay_status==0}}" class="absolute btn btn-plain" style="right:20rpx;" type="default" data-id="{{item.id}}" data-idx="{{index}}" data-no="{{item.refund_no}}" size="mini" plain catchtap="cancelRefund" hover-class="hover-class">取消</button>
     </view>
+    <template is="nomore" data="{{has_next}}"></template>
 </view>
 <template wx:else is="empty"></template>
