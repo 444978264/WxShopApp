@@ -9,14 +9,18 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.6",
-	"appid": "wx6001355aab687b62",
-	"projectname": "%E5%B9%BF%E5%91%8A%E7%BA%A2%E5%8C%85",
+	"appid": "wxa2d336cf09441184",
+	"projectname": "%E4%BA%91%E9%94%90%E5%95%86%E5%9F%8E",
 	"condition": {
 		"search": {
 			"current": -1,
 			"list": []
 		},
 		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
 			"current": -1,
 			"list": []
 		},

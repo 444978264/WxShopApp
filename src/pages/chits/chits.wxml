@@ -6,14 +6,15 @@
 </view>
 
 <block wx:if="{{list.length}}">
-    <view class="flex flex-row font14" wx:for="{{list}}" wx:key="{{index}}">
-        <view style="border-radius:10rpx;background:#fb5353;">
-            <text>{{item.value}}</text>
+    <view class="container flex flex-row font14" wx:for="{{list}}" wx:key="{{index}}">
+        <view class="circle padding0-20 flex flex-center" style="border-radius:10rpx;background:#fb5353;color:#fff;">
+            <text>￥<text class="font20">{{item.value}}</text></text>
+            <text class="font12">有效期内使用</text>
         </view>
-        <view class="flex">
-            <text>{{item.name}}</text>
-            <text>{{item.card_name}}</text>
-            <text>有效期至{{item.end_time}}</text>
+        <view class="flex padding-left10">
+            <text class="weight600 font16">{{item.name}}</text>
+            <text class="font12">{{item.card_name}}</text>
+            <text class="font14">有效期至{{item.end_time}}</text>
         </view>
     </view>
     <template is="nomore" data="{{has_next}}"></template>    

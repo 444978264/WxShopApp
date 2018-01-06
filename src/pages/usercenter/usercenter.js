@@ -7,12 +7,19 @@ extend({
     data: {
         userInfo: null,
         count: 0,
+        chits:0,
         extra: null
     },
     getCount() {
         this.$http.countOfCart().then(count => {
             if (!count) return
             this.setData({ count })
+        })
+    },
+    getChits(){
+        this.$http.chits().then(chits => {
+            if (!chits) return
+            this.setData({ chits:chits.total })
         })
     },
     fetch() {
@@ -28,10 +35,10 @@ extend({
         this.setData({ userInfo })
         this.getCount();
         this.fetch();
+        this.getChits();
     },
     toUrl(e) {
         let { pay, dist,type } = this.dataset(e);
-        console.log(pay, dist,123132)
         if (pay >= 0 && dist >= 0) {
             this.$router.push("orders", {
                 pay,

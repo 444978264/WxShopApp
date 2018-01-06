@@ -9,7 +9,7 @@
 }
 .swiper{
     flex-grow:1;
-    height:500rpx;
+    height:562.5rpx;
 }
 /* .swiper-item{
     flex:1;

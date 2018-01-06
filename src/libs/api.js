@@ -38,7 +38,7 @@ const host = dev ? config.local : config.host;
         },
         data: {
           token: TOKEN,
-          sxs_id:'xcx01',
+          sxs_id:'c1',
           ...params
         },
         success: res => {

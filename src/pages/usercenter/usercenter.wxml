@@ -6,8 +6,7 @@
             <text class="font14" style="padding-top:20rpx;">{{userInfo.nickName}}</text>
         </view>
         <view class="cell-item flex flex-row">
-           <view class="flex-item flex flex-center">
-                 
+            <view class="flex-item flex flex-center">  
                 <text class="font16 weight">{{extra.balance}}</text>
                 <text class="font12 padding5">余额</text>
             </view>
@@ -16,10 +15,12 @@
                 <text class="font16 weight">{{count}}</text>
                 <text class="font12 padding5">购物袋</text>
             </view>-->
-             <view class="flex-item flex flex-center">
-                <text class="font16 weight">0</text>
-                <text class="font12 padding5">代金券</text>
-            </view>
+            <navigator class="flex-item flex flex-center" url="/pages/chits/chits"  hover-class="hover-class">
+                <view class="flex-item flex flex-center">
+                    <text class="font16 weight">{{chits}}<text class="font10">张</text></text>
+                    <text class="font12 padding5">代金券</text>
+                </view>
+            </navigator>   
             <!-- 
             <view class="flex-item flex flex-center">
                 <text class="font16 weight">{{count}}</text>

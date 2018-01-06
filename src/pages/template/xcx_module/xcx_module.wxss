@@ -12,7 +12,7 @@
     padding:0 10rpx;
 }
 .goods-module .goods-img{
-    height:345rpx;
+    height:258.75rpx;
 }
 .module-goods-item{
     width:50%;

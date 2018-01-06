@@ -98,6 +98,8 @@
         </view> -->   
     </view>  
 </view>
+<view class="h50"></view>
+
 
 <view class="footer btn-group">
     <!--<view class="btn btn-primary" bindtap="resultCtrl" data-type="cart">

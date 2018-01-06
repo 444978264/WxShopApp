@@ -76,13 +76,15 @@
     <view style="padding:20rpx 0;">
         <view class="line"></view>
     </view>
-    <view hidden class="flex flex-between flex-row font14">
-        <text>代金券</text>
-        <text>商品金额</text>
-    </view>
-     <view hidden style="padding:20rpx 0;">
-        <view class="line"></view>
-    </view>
+    <block wx:if="{{false}}">
+        <view class="flex flex-between flex-row font14">
+            <text>代金券</text>
+            <text class="label" style="margin:0;">0张可用</text>
+        </view>
+        <view style="padding:20rpx 0;">
+            <view class="line"></view>
+        </view>
+    </block>
     <view class="flex flex-between flex-row font14 weight600">
         <text>订单总额</text>
         <text>￥{{(final_sum -(ticketIdx>=0&&ticketLst[ticketIdx].value||0)+tools.parseNum(delivery_list[deliveryIdx].price))>=0?(final_sum
