@@ -108,6 +108,18 @@
 					"pathName": "pages/chits/chits",
 					"query": "",
 					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "手机绑定",
+					"pathName": "pages/bind_mobile/bind_mobile",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "404",
+					"pathName": "pages/404/404",
+					"query": ""
 				}
 			]
 		}

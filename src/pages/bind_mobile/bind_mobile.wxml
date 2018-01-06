@@ -1,0 +1,8 @@
+<view class="flex-item flex flex-center">
+    <image class="w200" style="margin-top:-20rpx;" src="../../img/unbind.svg" mode="widthFix"/>
+    <text class="font16 padding10">你还没有绑定手机呢</text>
+    <text class="font12 c-grey padding10">绑定手机号，可以更方便为你服务</text>
+    <button class="btn btn-default w200 font16" open-type="getPhoneNumber" type="default" bindgetphonenumber="getMobile" size="default" bindtap="getPhoneNumber" hover-class="hover-class">同步微信手机号</button>
+    <view class="line-container"></view>
+    <button class="btn btn-default w200 font16" type="default" size="default" bindtap="defaultTap" hover-class="hover-class">绑定手机</button>
+</view>

@@ -110,7 +110,7 @@ export default {
             paymentIdx,
             goodsList
         } = this.data;
-        
+
         let payment = paymentList[paymentIdx].id;
 
         if (this._order_id == null) {
@@ -173,23 +173,18 @@ export default {
             this.setData({
                 show_modal: false
             }, () => {
-                wx.requestPayment({
-                    ...other,
-                    success: (res) => {
-                        console.log(res)
-                        this.$http.payCbk({
-                            order_id: this._order_id
-                        }).then(res => {
-                            if (!res) return
-                            //跳到订单详情里
-                            this.$router.redirect("order_detail", {
-                                id: this._order_id
-                            })
-                        })
-                    },
-                    fail: (err) => {
-                        console.log(err)
-                    }
+                this._wxPay({
+                    ...other
+                }).then(res => {
+                    return this.$http.payCbk({
+                        order_id: this._order_id
+                    })
+                }).then(res => {
+                    if (!res) return
+                    //跳到订单详情里
+                    this.$router.redirect("order_detail", {
+                        id: this._order_id
+                    })
                 })
             })
         })

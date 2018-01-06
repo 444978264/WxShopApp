@@ -1,7 +1,10 @@
 //app.js
 import { login, setToken, recmd, $Location } from 'libs/api'
 import { setItemSync, getItemSync, alert } from 'utils/util'
+import { _wxlogin, _wxSetting, _wxUserInfo } from 'libs/wx_api'
+
 import router from 'utils/route'
+
 App({
   onLaunch: function (res) {
     console.log('this is launch', res)
@@ -9,13 +12,12 @@ App({
     this.globalData.page = query;
   },
   // 获取 定位
-  getLocation({ success, fail}) {
+  getLocation({ success, fail }) {
     $Location.info((res) => {
       let { result } = res.originalData;
       this.globalData.location = result;
       success && success(res);
     }, (err) => {
-      console.log(err)
       fail && fail(err);
     })
   },
@@ -44,40 +46,24 @@ App({
       router.redirect('index')
     } else {
       //调用登录接口
-      wx.getSetting({
-        success: (config) => {
-          console.log(config)
-          wx.login({
-            success: data => {
-              // console.log(data.code) // 登陆凭证获取openid
-              this.getUserInfo(data, cb);
-            },
-            fail: err => {
-              console.log(err, 66)
-            }
-          })
-        },
-        fail: err => {
-          console.log(err, 55)
-        }
+      _wxlogin().then(code => {
+        console.log(code)
+        this.getUserInfo(code, cb);
       })
     }
   },
-  getUserInfo(data, cb) {
-    wx.getUserInfo({
-      success: res => {
-        this.globalData.userInfo = res.userInfo;
-        setItemSync('userInfo', res.userInfo)
-        typeof cb == "function" && cb(data.code, res)
-      },
-      fail: err => {
-        console.log(err, 77)
-        console.log(router.loading)
+  getUserInfo(code, cb) {
+     _wxUserInfo().then(res => {
+      if (!res) {
         router.redirect('404', {
           from: 'login',
           prop: 'info'
         })
+        return
       }
+      this.globalData.userInfo = res.userInfo;
+      setItemSync('userInfo', res.userInfo)
+      typeof cb == "function" && cb(code, res)
     })
   },
   globalData: {

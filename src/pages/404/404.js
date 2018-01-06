@@ -26,7 +26,7 @@ let app = getApp();
 extend({
     data: {
         iconSize: 100,//默认80
-        icon: '../../img/cfg_icon.svg',//显示tipInfo左边的icon
+        icon: '../../img/config.svg',//显示tipInfo左边的icon
         title: '未获得授权',
         btnInfo: '获取授权',
     },
@@ -35,39 +35,37 @@ extend({
     btnDefault() {
         this.$message('确定要重新获取授权嘛？', {
             success: res => {
-                this.getUserLocation();
+                this.getUser();
             },
             showCancel: true
         })
     },
-    getUserLocation() {
-        wx.openSetting({
-            success: (res) => {
-                console.log(res)
-                let code = setMap[this.prop].code;
-                switch (code) {
-                    case 'scope.userLocation':
-                        if (res.authSetting[code]) {
-                            app.getLocation({
-                                success: () => {
-                                    this.goback();
-                                }
-                            })
-                        }
-                        break
-                    case 'scope.userInfo':
-                        if (this.from && res.authSetting[code]) {
-                            this.$router.redirect(this.from);
-                        }
-                        break
-                    case 'scope.record':
-                        if (res.authSetting[code]) {
-                            this.goback();
-                        }
-                        break
-                    default:
-                        break
-                }
+    getUser() {
+        this._wxSetting.set().then(res => {
+            console.log(res)
+            let code = this.prop ? setMap[this.prop].code : setMap.info.code;
+            switch (code) {
+                case 'scope.userLocation':
+                    if (res.authSetting[code]) {
+                        app.getLocation({
+                            success: () => {
+                                this.goback();
+                            }
+                        })
+                    }
+                    break
+                case 'scope.userInfo':
+                    if (this.from && res.authSetting[code]) {
+                        this.$router.redirect(this.from);
+                    }
+                    break
+                case 'scope.record':
+                    if (res.authSetting[code]) {
+                        this.goback();
+                    }
+                    break
+                default:
+                    break
             }
         })
     },
@@ -75,7 +73,6 @@ extend({
         let { from, prop } = params;
         this.from = from;
         this.prop = prop;
-        console.log(params)
         if (setMap[prop]) {
             let { code, ...other } = setMap[prop]
             this.setData({

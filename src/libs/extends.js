@@ -1,16 +1,22 @@
 import { options, $router } from "../utils/index"
 import $http, { TOKEN, getImg } from './api';
+import wxApi from './wx_api';
 import _ from './deepcopy';
 import shareConfig from '../config/share.config';
 import config_audio, { recorderManager, innerAudioContext, needImport } from "./config_audio";
 import './polyfill'
+
+console.log(wxApi)
+
 var config = {
-    data:{
-        has_next:true
+    data: {
+        has_next: true
     },
     // 通用方法
     ...options,
 
+    //微信的一些通用api
+    ...wxApi,
     // 录音&播放配置
     // ...config_audio,
 

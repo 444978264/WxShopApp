@@ -2,6 +2,18 @@
     <view class="shadow-border">
         <view class="cell-item flex flex-row flex-between flex-align font14" bindtap="getAuth">
             <view class="flex flex-row flex-center">
+                <image class="icon15 margin-right10" mode="widthFix" src="../../img/mobile.svg"/>
+                <text class="c-grey">手机号</text>                   
+            </view>
+            <view class="flex flex-row flex-center">
+                <image class="icon15" mode="widthFix" src="../../img/safe.svg"/>            
+                <text class="c-grey">15867777909</text>
+                <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="cell-item flex flex-row flex-between flex-align font14" bindtap="getAuth">
+            <view class="flex flex-row flex-center">
                 <image class="icon15 margin-right10" mode="widthFix" src="../../img/auth.svg"/>
                 <text class="c-grey">重新授权</text>                   
             </view>

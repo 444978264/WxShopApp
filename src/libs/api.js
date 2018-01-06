@@ -1,8 +1,10 @@
 import bmap from './bmap-wx.min.js';
 import { $loading, removeItemSync, getItemSync, setItemSync } from '../utils/util';
+import Factory from './promise_factory';
 import config from '../config/config';
 import dev from '../is_develop';
 export let TOKEN = getItemSync('token');
+
 const INFO = getItemSync('localInfo') || {};
 const host = dev ? config.local : config.host;
 /* 新建百度地图对象 */
@@ -28,7 +30,7 @@ const host = dev ? config.local : config.host;
   let lock = false;
   const ajax = (url, params, config) => {
     console.log(url)
-    let promise = new Promise((resolve, reject) => {
+    let promise = Factory((resolve, reject) => {
       let result = Object.assign({
         url: url,
         method: 'POST',
@@ -110,36 +112,34 @@ const host = dev ? config.local : config.host;
 
   let uploadImg = getUrl('index', 'upload');
   // 文件上传---(暂时不用)
-  // const upload = function (tempFilePath, data) {
-  //   let promise = new Promise(function (resolve, reject) {
-  //     wx.uploadFile({
-  //       url: uploadImg,
-  //       filePath: tempFilePath,
-  //       name: 'file',
-  //       formData: {
-  //         ...data,
-  //         token: TOKEN
-  //       },
-  //       success: res => {
-  //         let result = JSON.parse(res.data);
-  //         console.log(result)
-  //         if (result.code <= -9999) {
-  //           removeItemSync('token');
-  //           wx.navigateTo({
-  //             url: '/pages/login/login',
-  //           })
-  //           return
-  //         }
-  //         console.log('上传成功，开始识别语音')
-  //         resolve(result);
-  //       },
-  //       fail: err => {
-  //         console.log(err)
-  //       }
-  //     })
-  //   })
-  // }
-
+  const upload = function (url, tempFilePath, data) {
+    Factory(function (resolve, reject) {
+        wx.uploadFile({
+            url: url,
+            filePath: tempFilePath,
+            name: 'file',
+            formData: {
+                ...data,
+                token: TOKEN
+            },
+            success: res => {
+                let result = JSON.parse(res.data);
+                console.log(result)
+                if (result.code <= -9999) {
+                    removeItemSync('token');
+                    wx.navigateTo({
+                        url: '/pages/login/login',
+                    })
+                    return
+                }
+                resolve(result);
+            },
+            fail: err => {
+                console.log(err)
+            }
+        })
+    })
+  }
 /* 所有api 接口 */
   // 登录
   export const login = (params, config) => ajax(getUrl('iwx', 'auth_from_xcx'), params, config);
@@ -205,6 +205,8 @@ const host = dev ? config.local : config.host;
   export const getByCategory = (params,config)=>ajax(getUrl("igoods","get_by_category"), params, config)
   // 代金券
   export const chits = (params,config)=>ajax(getUrl("icashcoupon","lst"), params, config)
+  // 代金券
+  export const getMobileFromWx = (params,config)=>ajax(getUrl("iwx","decrypt_from_xcx"), params, config)
 
 /* export default */
   export default {
@@ -244,5 +246,6 @@ const host = dev ? config.local : config.host;
     addressAdd,
     addressDel,
     payUpdate,
-    chits
+    chits,
+    getMobileFromWx
   }
