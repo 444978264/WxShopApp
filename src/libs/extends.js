@@ -66,7 +66,7 @@ var config = {
         title: '云锐商城',
         desc: '云锐商城，想你所想!',
         params: null,
-        imageUrl: getImg('share_now.png'),
+        // imageUrl: getImg('share_now.png'),
         path: '/pages/index/index',
         success: function (res) {
             console.log(res)

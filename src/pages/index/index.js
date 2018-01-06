@@ -51,7 +51,7 @@ extend({
                     }
                 } else if (res.xcx_module == 'swiper') {
                     let h = this.getItemSync('swiper_height');
-                    res.swiperHeight =h||0;
+                    res.swiperHeight = h || 0;
                 }
             })
             this.setData({ result })
@@ -59,10 +59,10 @@ extend({
     },
     // swiper自适应高度
     imgLoad({ detail, ...other }) {
-        console.log('图片加载成功')
         let { id } = this.dataset(other);
         let { result } = this.data;
         let h = detail.height;
+        console.log(h, result[id].swiperHeight)
         if (result[id].swiperHeight <= 0) {
             result[id].swiperHeight = h;
         } else {
