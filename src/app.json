@@ -4,6 +4,7 @@
     "pages/category/category",
     "pages/products/products",
     "pages/chits/chits",
+    "pages/unbind_mobile/unbind_mobile",
     "pages/bind_mobile/bind_mobile",
     "pages/goods_detail/goods_detail",
     "pages/order_submit/order_submit",

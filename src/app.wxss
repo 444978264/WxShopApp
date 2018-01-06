@@ -198,7 +198,23 @@ page{
         border:4rpx solid rgb(55, 55, 55)  !important;
         color:rgb(55, 55, 55)
     }
-
+    .btn{
+        border:0 !important;
+        border-radius:0;
+        margin:0;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    .btn.btn-default{
+        background:rgb(55, 55, 55);
+        border:0;
+        color:#fff;
+    }
+    .btn.btn-plain{
+        border:4rpx solid rgb(55, 55, 55)  !important;
+        color:rgb(55, 55, 55)
+    }
     .hover-class{
         opacity:.8;
     }

@@ -72,18 +72,18 @@
              <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
         </view>
         </navigator>   
-
-        <view class="line"></view>
-        <navigator url="/pages/bind_mobile/bind_mobile" class="c-grey" hover-class="hover-class">
-        <view class="cell-item flex flex-row flex-between flex-align font14" >
-            <view class="flex flex-row flex-center">
-                <image class="icon15 margin-right10" mode="widthFix" src="../../img/mobile.svg"/>
-                <text class="c-grey">手机绑定</text>                   
+        <block wx:if="{{!extra.mobile}}">   
+            <view class="line"></view>
+            <navigator url="/pages/unbind_mobile/unbind_mobile" class="c-grey" hover-class="hover-class">
+            <view class="cell-item flex flex-row flex-between flex-align font14" >
+                <view class="flex flex-row flex-center">
+                    <image class="icon15 margin-right10" mode="widthFix" src="../../img/mobile.svg"/>
+                    <text class="c-grey">手机绑定</text>                   
+                </view>
+                <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
             </view>
-             <image class="icon12" mode="widthFix" src="../../img/arrow_right.svg"/>
-        </view>
-        </navigator>  
-
+            </navigator>  
+        </block>
     </view>
 </view>
 <view class="box cell-group">

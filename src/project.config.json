@@ -25,15 +25,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 12,
 			"list": [
-				{
-					"id": 0,
-					"name": "测试转发",
-					"pathName": "pages/content/content",
-					"query": "recmd_userid=12313&id=355",
-					"scene": "1008"
-				},
 				{
 					"id": 1,
 					"name": "zxx",
@@ -110,7 +103,7 @@
 					"scene": "1008"
 				},
 				{
-					"id": -1,
+					"id": 13,
 					"name": "手机绑定",
 					"pathName": "pages/bind_mobile/bind_mobile",
 					"query": ""
