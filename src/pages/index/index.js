@@ -61,7 +61,7 @@ extend({
     imgLoad({ detail, ...other }) {
         let { id } = this.dataset(other);
         let { result } = this.data;
-        let h = detail.height;
+        let h = detail.height*750/detail.width;
         console.log(h, result[id].swiperHeight)
         if (result[id].swiperHeight <= 0) {
             result[id].swiperHeight = h;
