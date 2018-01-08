@@ -87,8 +87,7 @@ const host = dev ? config.local : config.host;
       if (res.code < 0) {
         wx.showToast({
           title: res.msg,
-          icon: 'loading',
-          image: '/img/tip.svg',
+          image: '../../img/warn.png',
           duration: 2000
         })
         return false
@@ -205,9 +204,12 @@ const host = dev ? config.local : config.host;
   export const getByCategory = (params,config)=>ajax(getUrl("igoods","get_by_category"), params, config)
   // 代金券
   export const chits = (params,config)=>ajax(getUrl("icashcoupon","lst"), params, config)
-  // 代金券
+  // 同步微信手机号
   export const getMobileFromWx = (params,config)=>ajax(getUrl("iwx","decrypt_from_xcx"), params, config)
-
+  // 绑定手机
+  export const setMobile = (params,config)=>ajax(getUrl("imember","set_mobile"), params, config)
+  // 发送验证码
+  export const sendCode = (params,config)=>ajax(getUrl("imember","get_mobile_code"), params, config)
 /* export default */
   export default {
     TOKEN,
@@ -247,5 +249,7 @@ const host = dev ? config.local : config.host;
     addressDel,
     payUpdate,
     chits,
-    getMobileFromWx
+    getMobileFromWx,
+    setMobile,
+    sendCode
   }

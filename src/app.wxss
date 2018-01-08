@@ -215,6 +215,9 @@ page{
         border:4rpx solid rgb(55, 55, 55)  !important;
         color:rgb(55, 55, 55)
     }
+    .btn.btn-disabled{
+        opacity:.8
+    }
     .hover-class{
         opacity:.8;
     }

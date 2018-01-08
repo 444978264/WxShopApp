@@ -3,10 +3,13 @@ import extend from '../../libs/extends.js';
 const app = getApp();
 extend({
     data: {
-        userInfo: null,
-        second:60,
-        extra: null
+        mobile: '',
+        second: 60,
+        hasSend: false,
+        disabled: true
     },
+    mobile: '',
+    code: '',
     getMobile({ detail }) {
         let { errMsg, ...other } = detail;
         if (errMsg == 'getPhoneNumber:ok') {
@@ -18,28 +21,73 @@ extend({
             })
         }
     },
-    bind(){
-        
+    onInput({ detail, ...other }) {
+        let { type } = this.dataset(other);
+        let { disabled } = this.data;
+        switch (type) {
+            case 'mobile':
+                this.mobile = detail.value;
+                break
+            case 'code':
+                this.code = detail.value;
+                break
+        }
+        if (disabled && this.mobile.length == 11 && this.code.length == 6) {
+            this.setData({
+                disabled: false
+            })
+        } else if (!disabled) {
+            this.setData({
+                disabled: true
+            })
+        }
+        return detail.value
     },
-    sendCode(){
-        this.timer = setInterval(() => {
-            let { second } = this.data;
-            if (second < 2) {
-                clearInterval(this.timer);
-                this.setData({
-                    showBtn: true
-                }, () => {
-                    // wx.createSelectorQuery().select('#btn-back').boundingClientRect(function (rect) {
-                    //     // 使页面滚动到底部
-                    //     wx.pageScrollTo({
-                    //         scrollTop: rect.bottom
-                    //     })
-                    // }).exec()
-                })
-                return
-            }
-            second--;
-            this.setData({ second });
-        }, 1000)
+    bind() {
+        this.$http.setMobile({
+            mobile: this.mobile,
+            code: this.code
+        }).then(res => {
+            if (!res) return
+            this.$message('绑定成功', {
+                success: () => {
+                    this.$router.redirect('setting');
+                }
+            })
+        })
+    },
+    sendCode() {
+        if (this.mobile == '' || this.mobile.length < 11) {
+            this.$message('请输入正确的手机号', {
+                success: void (0)
+            })
+            return
+        }
+        this.$http.sendCode({
+            mobile: this.mobile
+        }).then(res => {
+            if (!res) return
+            this.setData({
+                hasSend: true
+            }, () => {
+                this.timer = setInterval(() => {
+                    let { second } = this.data;
+                    if (second < 2) {
+                        clearInterval(this.timer);
+                        this.setData({
+                            hasSend: false
+                        })
+                        return
+                    }
+                    second--;
+                    this.setData({ second });
+                }, 1000)
+            })
+        })
+    },
+    onUnload() {
+        if (this.timer) {
+            clearInterval(this.timer);
+        }
     }
 });

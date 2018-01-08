@@ -1,11 +1,11 @@
 <view class="cell-group font14">
     <view class="cell-item">
-        <input placeholder="手机号" auto-focus/>
+        <input placeholder="手机号" focus maxlength="11" value="{{mobile}}" data-type="mobile" bindinput="onInput"/>
     </view>
     <view class="line"></view>
     <view class="cell-item flex flex-row flex-align">
-        <input class="flex-item" placeholder="验证码"/>
-        <button class="btn btn-default font12" style="line-height:2.25;" open-type="getPhoneNumber" type="mini" bindgetphonenumber="getMobile" size="default" bindtap="getPhoneNumber" hover-class="hover-class">获取验证码</button>
+        <input class="flex-item" placeholder="验证码" data-type="code" bindinput="onInput" maxlength="6"/>
+        <button class="btn btn-default font12 {{hasSend?'btn-disabled':''}}" style="line-height:2.25;" disabled="{{hasSend}}" type="mini" size="default" bindtap="sendCode" hover-class="hover-class">{{hasSend?second+'s':'获取验证码'}}</button>
     </view>
 </view>
-<button class="btn btn-default font16" open-type="getPhoneNumber" type="default" bindgetphonenumber="getMobile" size="default" bindtap="getPhoneNumber" hover-class="hover-class">绑定</button>
+<button class="btn btn-default font16 {{disabled?'btn-disabled':''}}" type="default" disabled="{{disabled}}" size="default" bindtap="bind" hover-class="hover-class">绑定</button>

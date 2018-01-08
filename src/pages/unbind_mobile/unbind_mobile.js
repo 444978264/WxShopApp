@@ -3,9 +3,7 @@ import extend from '../../libs/extends.js';
 const app = getApp();
 extend({
     data: {
-        userInfo: null,
-        second:60,
-        extra: null
+        mobile: null,
     },
     getMobile({ detail }) {
         let { errMsg, ...other } = detail;
@@ -18,28 +16,14 @@ extend({
             })
         }
     },
-    bind(){
-        
-    },
-    sendCode(){
-        this.timer = setInterval(() => {
-            let { second } = this.data;
-            if (second < 2) {
-                clearInterval(this.timer);
+    onShow() {
+        this.$http.balance().then(res => {
+            if (!res) return
+            if (res.g_info.mobile) {
                 this.setData({
-                    showBtn: true
-                }, () => {
-                    // wx.createSelectorQuery().select('#btn-back').boundingClientRect(function (rect) {
-                    //     // 使页面滚动到底部
-                    //     wx.pageScrollTo({
-                    //         scrollTop: rect.bottom
-                    //     })
-                    // }).exec()
+                    mobile: res.g_info.mobile
                 })
-                return
             }
-            second--;
-            this.setData({ second });
-        }, 1000)
+        })
     }
 });
