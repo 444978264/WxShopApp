@@ -13,6 +13,7 @@ function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
+
 export const FormatTime = formatTime;
 
 // 显示/隐藏转发按钮
@@ -58,7 +59,7 @@ export const $loading = {
 }
 
 // 显示modal
-export const $message = (content, { success, cancel, ...other }) => {
+export const $message = (content, { success, cancel, ...other } = {}) => {
   wx.showModal({
     title: "提示",
     content,
@@ -112,12 +113,8 @@ export const removeItemSync = wx.removeStorageSync;
 export const clearStorage = wx.clearStorage;
 export const clearStorageSync = wx.clearStorageSync;
 
-// 获取用户的当前设置
-export const $getSetting = success => wx.getSetting({ success })
-
 export default {
   formatTime,
-  $getSetting,
   $loading,
   $shareMenu,
   $message,

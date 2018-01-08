@@ -166,9 +166,7 @@ extend({
     toBuy() {
         let { count,  goods_type, store_num } = this.data;
         if (store_num <= 0) {
-            this.$message("库存不足", {
-                success: void (0)
-            })
+            this.$message("库存不足")
             return;
         }
         let params = {
@@ -190,7 +188,7 @@ extend({
         this.$http.joinCart(config).then(res => {
             this.loading = false;
             if (!res) return
-            this.$message('成功加入购物车', { success: void (0) })
+            this.$message('成功加入购物车')
         })
     },
     closePop() {

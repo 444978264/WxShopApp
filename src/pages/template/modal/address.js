@@ -69,9 +69,7 @@ export default {
                 } else if (authSetting['scope.address']) {
                     chooseAddress()
                 } else {
-                    this.$message("请前往设置，重新获取授权", {
-                        success: void (0)
-                    })
+                    this.$message("请前往设置，重新获取授权")
                 }
             }
         })

@@ -36,9 +36,6 @@ extend({
       }
     })
   },
-  onLoad: function (options) {
-    this.init();
-  },
   defaultTap() {
     this.$router.push('index')
   },

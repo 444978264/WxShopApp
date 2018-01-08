@@ -115,15 +115,11 @@ export default {
 
         if (this._order_id == null) {
             if (!addressList.length) {
-                this.$message('请选择地址', {
-                    success: void (0)
-                })
+                this.$message('请选择地址')
                 return
             }
             if (!delivery_list.length) {
-                this.$message('请选择配送方式', {
-                    success: void (0)
-                })
+                this.$message('请选择配送方式')
                 return
             }
             this.$http.toPay({

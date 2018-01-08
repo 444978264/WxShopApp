@@ -1,4 +1,8 @@
 /**index.wxss**/
+page{
+  height:100%;
+  background:#fff;
+}
 .container{
   justify-content: flex-start;
   padding-top:200rpx;

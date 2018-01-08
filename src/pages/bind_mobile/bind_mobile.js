@@ -58,9 +58,7 @@ extend({
     },
     sendCode() {
         if (this.mobile == '' || this.mobile.length < 11) {
-            this.$message('请输入正确的手机号', {
-                success: void (0)
-            })
+            this.$message('请输入正确的手机号')
             return
         }
         this.$http.sendCode({
