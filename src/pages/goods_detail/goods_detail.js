@@ -25,9 +25,8 @@ extend({
     id: null,
     loading: false,
     // 选择的商品id
-    sub_id: "",    
-    onLoad: function (options) {
-        let { id } = options
+    sub_id: "",
+    onLoad: function ({ id } = {}) {
         this.$shareParams.params.id = id;
         this.id = id;
         this.fetch();
@@ -37,7 +36,7 @@ extend({
     computedResult: function () {
         if (!this.data.spec_array.length) return;
         let { goodsType } = this._computed;
-        let { selectArr, store_num, price,  count } = this.data;
+        let { selectArr, store_num, price, count } = this.data;
         selectArr.forEach(function (res) {
             goodsType = goodsType.filter(function (elem) {
                 return elem.spec_array.indexOf(res) > -1;
@@ -64,7 +63,7 @@ extend({
         }
         price = goodsType[0].price;
         this.sub_id = goodsType[0].id;
-        this.setData({ price,  store_num, count })
+        this.setData({ price, store_num, count })
     },
     checkHandle(e) {
         let { val, idx } = this.dataset(e);
@@ -109,10 +108,10 @@ extend({
                 for (var i = 0; i < spec_array.length; i++) {
                     selectArr[i] = spec_array[i].value[0];
                 }
-            }else{
+            } else {
                 this.sub_id = this.id;
             }
-            
+
             this.setData({ result, photo, goods_type, spec_array, store_num, selectArr }, () => {
                 this.computedResult()
             });
@@ -164,7 +163,7 @@ extend({
         }
     },
     toBuy() {
-        let { count,  goods_type, store_num } = this.data;
+        let { count, goods_type, store_num } = this.data;
         if (store_num <= 0) {
             this.$message("库存不足")
             return;
@@ -178,7 +177,7 @@ extend({
     },
     joinCart() {
         if (this.loading) return
-        let { count,  goods_type } = this.data;
+        let { count, goods_type } = this.data;
         let config = {
             type: goods_type,
             id: this.sub_id,

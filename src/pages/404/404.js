@@ -69,8 +69,7 @@ extend({
             }
         })
     },
-    onLoad: function (params) {
-        let { from, prop } = params;
+    onLoad: function ({ from, prop } = {}) {
         this.from = from;
         this.prop = prop;
         if (setMap[prop]) {

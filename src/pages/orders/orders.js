@@ -56,7 +56,7 @@ let init = _.extend(true, {
             list = list.concat(res.rows);
             this.setData({
                 list,
-                has_next:res.has_next
+                has_next: res.has_next
             })
             console.log(res)
         })
@@ -126,8 +126,8 @@ let init = _.extend(true, {
             console.log(res)
         })
     },
-    onLoad({ pay, dist, type }) {
-        if(pay>=0&&dist>=0){
+    onLoad({ pay, dist, type } = {}) {
+        if (pay >= 0 && dist >= 0) {
             this.order_status = {
                 pay,
                 dist
